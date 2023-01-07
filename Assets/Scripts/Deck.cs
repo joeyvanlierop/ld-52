@@ -18,7 +18,7 @@ public class Deck : MonoBehaviour
     public List<Card> cardList;
 
 
-    void PopulateDeck() {
+    public void PopulateDeck() {
         IEnumerable<int> e = from weightCardPrefab in weightCardPrefabs select weightCardPrefab.weight;
         for (int i = 0; i < cardCount; i++) {
             cardList.Add(Instantiate(GetRandomCardByWeight(e.Sum())));
@@ -35,6 +35,17 @@ public class Deck : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public Card DrawNextCard() {
+        if (cardList.Count == 0) {
+            return null;
+        }
+        var card = cardList[0];
+        Debug.Log($"before {card.name}");
+        cardList.RemoveAt(0);
+        Debug.Log($"after {card.name}");
+        return card;
     }
 
     public Card GetRandomCardByWeight(int totalWeight)

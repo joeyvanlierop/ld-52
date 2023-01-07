@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     public Canvas transitionScreenPrefab;
     public Canvas generalUiPrefab;
     public Timer turnTimerPrefab;
+    public Deck deckPrefab;
     
     // Members
     public float kDefaultTurnTimer = 50;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     public Canvas transitionScreen;
     public Canvas generalUi;
     public Timer timer;
+    public Deck deck;
     
 
 
@@ -61,6 +63,9 @@ public class GameManager : MonoBehaviour, TimerObserver
         buttons.Find(b => b.name == "EndTurnButton").onClick.AddListener(Transition);
         buttons.Find(b => b.name == "DrawCardButton").onClick.AddListener(DrawCard);
         generalUi.enabled = false;
+
+        deck = Instantiate(deckPrefab);
+        deck.PopulateDeck();
     
 
 
@@ -104,7 +109,9 @@ public class GameManager : MonoBehaviour, TimerObserver
     }
 
     public void DrawCard() {
-
+        var card = deck.DrawNextCard();
+        Debug.Log($"even after {card.name}");
+        players[currentPlayerIndex].DrawCard(card);
         Debug.Log("Draw");
     }
 
