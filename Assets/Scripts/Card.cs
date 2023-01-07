@@ -5,11 +5,11 @@ using UnityEngine;
 public abstract class Card : MonoBehaviour
 {
     public int cost;
-    // public int cardID; //unique number to distinquish each individual card object
-    // public int playerDeck; // which deck does this card belong to
-    // public int cardLocation; //is this card in the draw pile (0), a players hand (1) or the discard (2)
     public Vector2 scaleChange; // creates sccale change variable (values assigned in unity)
-
+    public bool mouseOver;
+    public Vector3 originalPOS; //original card position
+    public Vector3 hoverMovement; // how much card moves when card hovered over
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,31 +20,31 @@ public abstract class Card : MonoBehaviour
     void Update()
     {
         
-
     }
 
-    public abstract void ActionPerformed(); //performs card action and then calls removeFromDeck to put card in discard
+    //performs card action
+    public abstract void ActionPerformed(); 
 
-    public void cardGrowBig()
+    public void OnMouseEnter()
     {
-        float ScaleX = 1.3f;
-        float ScaleY = 1.3f;
-        transform.localScale = new Vector2(transform.localScale.x * ScaleX, transform.localScale.y * ScaleY);
-    }//function for card to grow bigger when hovered over
+        //getting original position of card
+        originalPOS = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-        //card gets bigger when function called
-  
+        // makes card bigger when mouse first passes over it
+        transform.localScale = new Vector2(transform.localScale.x + scaleChange.x, transform.localScale.y + scaleChange.y);
 
-    // public void removeFromDeck()
-    // {
-    //     cardLocation = 2;
-    // }
+        // moves card to be fully on screen
+        transform.position = new Vector3(originalPOS.x + hoverMovement.x, originalPOS.y + hoverMovement.y, originalPOS.z + hoverMovement.z);
+    }
 
-    // public void addToDeck()
-    // {
-    //     //adds card to deck, changes cardLocation variable.
+    public void OnMouseExit()
+    {
+        // makes card smaller when mouse leaves it
+        transform.localScale = new Vector2(transform.localScale.x - scaleChange.x, transform.localScale.y - scaleChange.y);
 
-    // }
+        // moves card to original postion
+        transform.position = originalPOS;
+    }
 
 
 
