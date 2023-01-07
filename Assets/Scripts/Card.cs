@@ -5,9 +5,10 @@ using UnityEngine;
 public abstract class Card : MonoBehaviour
 {
     public int cost;
-    public int cardID; //unique number to distinquish each individual card object
-    public int playerDeck; // which deck does this card belong to
-    public int cardLocation; //is this card in the draw pile, a players hand or the discard 
+    // public int cardID; //unique number to distinquish each individual card object
+    // public int playerDeck; // which deck does this card belong to
+    // public int cardLocation; //is this card in the draw pile (0), a players hand (1) or the discard (2)
+    public Vector2 scaleChange; // creates sccale change variable (values assigned in unity)
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +32,19 @@ public abstract class Card : MonoBehaviour
         transform.localScale = new Vector2(transform.localScale.x * ScaleX, transform.localScale.y * ScaleY);
     }//function for card to grow bigger when hovered over
 
-    public abstract void removeFromDeck(); //puts card in discard pile
+        //card gets bigger when function called
+  
 
-    public abstract void addToDeck(); //adds card to deck, changes cardLocation variable.
+    // public void removeFromDeck()
+    // {
+    //     cardLocation = 2;
+    // }
 
+    // public void addToDeck()
+    // {
+    //     //adds card to deck, changes cardLocation variable.
+
+    // }
 
 
 
