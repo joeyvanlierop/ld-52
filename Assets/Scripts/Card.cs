@@ -8,6 +8,7 @@ public abstract class Card : MonoBehaviour
     public Vector2 scaleChange; // creates sccale change variable (values assigned in unity)
     public bool mouseOver;
     public Vector3 originalPOS; //original card position
+    public int originalSort; //original card sorting order
     public Vector3 hoverMovement; // how much card moves when card hovered over
     
     // Start is called before the first frame update
@@ -27,14 +28,17 @@ public abstract class Card : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        //getting original position of card
+        //getting original position and sorting order of card
         originalPOS = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        originalSort = GetComponent<SpriteRenderer>().sortingOrder;
 
         // makes card bigger when mouse first passes over it
         transform.localScale = new Vector2(transform.localScale.x + scaleChange.x, transform.localScale.y + scaleChange.y);
 
         // moves card to be fully on screen
         transform.position = new Vector3(originalPOS.x + hoverMovement.x, originalPOS.y + hoverMovement.y, originalPOS.z + hoverMovement.z);
+        
+        GetComponent<SpriteRenderer>().sortingOrder = 100;
     }
 
     public void OnMouseExit()
@@ -44,6 +48,7 @@ public abstract class Card : MonoBehaviour
 
         // moves card to original postion
         transform.position = originalPOS;
+        GetComponent<SpriteRenderer>().sortingOrder = originalSort;
     }
 
 
