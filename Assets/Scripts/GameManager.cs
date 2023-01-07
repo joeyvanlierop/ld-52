@@ -10,15 +10,18 @@ public class GameManager : MonoBehaviour, TimerObserver
     // Prefabs
     public Player playerPrefab;
     public Canvas transitionScreenPrefab;
+    public Canvas generalUiPrefab;
     public Timer turnTimerPrefab;
 
     // Members
-    public float kDefaultTurnTimer = 5;
+    public float kDefaultTurnTimer = 50;
+    public float transitionTime = 5;
     public int playerCount = 4;
     public List<Player> players;
     public Canvas transitionScreen;
+    public Canvas generalUi;
     public Timer timer;
-    public float transitionTime = 5;
+    
 
 
     private int currentPlayerIndex = 0;
@@ -44,11 +47,18 @@ public class GameManager : MonoBehaviour, TimerObserver
          players[randomIndex] = temp;
         }
 
-        transitionScreen = Instantiate(transitionScreenPrefab);
-        transitionScreen.GetComponent<Image>().color = new Color(0,0,0,0);
-
         timer = Instantiate(turnTimerPrefab);
         timer.RegisterObserver(this);
+
+        transitionScreen = Instantiate(transitionScreenPrefab);
+        transitionScreen.GetComponent<Image>().color = new Color(0,0,0,0);
+        transitionScreen.GetComponentInChildren<Button>().onClick.AddListener(Transition);
+
+
+        generalUi = Instantiate(generalUiPrefab);
+        generalUi.GetComponentInChildren<Button>().onClick.AddListener(Transition);
+        generalUi.enabled = false;
+    
 
 
         StartTransition(true);
@@ -63,6 +73,8 @@ public class GameManager : MonoBehaviour, TimerObserver
     }
 
     void StartTransition(bool first = false) {
+        generalUi.enabled = false;
+        transitionScreen.enabled = true;
         timer.StartTimer(transitionTime);
         transitionScreen.GetComponent<Image>().color = new Color(0,0,0,255);
         string text;
@@ -78,14 +90,22 @@ public class GameManager : MonoBehaviour, TimerObserver
 
 
     void EndTransition() {
+        transitionScreen.enabled = false;
+        generalUi.enabled = true;
         transitionScreen.GetComponent<Image>().color = new Color(0,0,0,0);
         timer.StartTimer(kDefaultTurnTimer);
-        transitionScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "KSSSS";
+        transitionScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
         Debug.Log("End");
     }
 
 
     public void OnTimerEnd() {
+        Transition();
+    }
+
+
+    public void Transition() {
+        // timer.PauseTimer();
         if (!inTransition) {
             currentPlayerIndex++;
             if (currentPlayerIndex == playerCount) {
@@ -97,6 +117,4 @@ public class GameManager : MonoBehaviour, TimerObserver
         }
         inTransition = !inTransition;
     }
-
-    
 }
