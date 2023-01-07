@@ -7,7 +7,8 @@ using UnityEngine.Tilemaps;
 
 public class HighlightEffect : MonoBehaviour
 {
-    private Tilemap highlightTileMap;
+    Tilemap highlightTileMap;
+    MouseInput mouseInput;
 
     public bool enabled = true;
     public Tile highlightTile;
@@ -16,10 +17,35 @@ public class HighlightEffect : MonoBehaviour
     public Tilemap[] groundTilemaps;
     public Tilemap[] obstacleTilemaps;
     public Tile[] blacklistedTiles;
-    
+    public GameObject cornCrop;
+
+    void Awake()
+    {
+        mouseInput = new MouseInput();
+    }
+
+    private void OnEnable()
+    {
+        mouseInput.Enable();
+    }
+
+    private void OnDisable()
+    {
+        mouseInput.Disable();
+    }
+
     void Start()
     {
         highlightTileMap = GameObject.FindGameObjectWithTag("Highlight").GetComponent<Tilemap>();
+        mouseInput.Mouse.MouseClick.performed += _ => MouseClick();
+    }
+
+    void MouseClick()
+    {
+        var position = GetHighlightPosition();
+        if (!IsValidTile(position))
+            return;
+        Instantiate(cornCrop, position, Quaternion.identity);
     }
 
     void Update()
@@ -29,18 +55,20 @@ public class HighlightEffect : MonoBehaviour
         
         highlightTileMap.ClearAllTiles();
 
+        var highlightPosition = GetHighlightPosition();
+
+        if (IsValidTile(highlightPosition))
+            highlightTileMap.SetTile(highlightPosition, highlightTile);
+        else
+            highlightTileMap.SetTile(highlightPosition, blacklistTile);
+    }
+
+    Vector3Int GetHighlightPosition()
+    {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int highlightPosition = highlightTileMap.WorldToCell(mousePosition);
         highlightPosition += offset;
-
-        if (IsValidTile(highlightPosition))
-        {
-            highlightTileMap.SetTile(highlightPosition, highlightTile);
-        }
-        else
-        {
-            highlightTileMap.SetTile(highlightPosition, blacklistTile);
-        }
+        return highlightPosition;
     }
 
     bool IsValidTile(Vector3Int position)
@@ -60,5 +88,10 @@ public class HighlightEffect : MonoBehaviour
         }
         
         return true;
-    } 
+    }
+
+    void PlaceTile()
+    {
+        
+    }
 }

@@ -12,8 +12,8 @@ public abstract class Crop : MonoBehaviour
     void Start()
     {
         var tilemap = GameObject.FindGameObjectWithTag("Crops").GetComponent<Tilemap>();
-        var position = transform.position;
-        tilemap.SetTile(new Vector3Int((int)position.x, (int)position.y, 0), tile);
+        var position = Vector3Int.FloorToInt(transform.position);
+        tilemap.SetTile(position, tile);
     }
 
     public abstract void OnTurn();
