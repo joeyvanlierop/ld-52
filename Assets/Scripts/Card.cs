@@ -28,7 +28,7 @@ public abstract class Card : MonoBehaviour
     public void cardGrowBig()
     {
         //card gets bigger when function called
-        transform.localScale += scaleChange;
+        // transform.localScale += scaleChange;
     }
 
     // public void removeFromDeck()

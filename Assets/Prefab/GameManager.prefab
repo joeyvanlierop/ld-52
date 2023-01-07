@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885e909cc90e56447b5a14b59e7eb606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: -2142355289316412512, guid: 2753435893110e04cb85d424450a40ed, type: 3}
+  transitionScreenPrefab: {fileID: 3628488393002763300, guid: d37faad3f54de164eab82cef97490c73, type: 3}
+  turnTimerPrefab: {fileID: -1922170488210695991, guid: 45f37cbc02d70494fbd3dbd35972c3b6, type: 3}
+  kDefaultTimer: 30
+  playerCount: 4
+  players: []
+  transitionScreen: {fileID: 0}
