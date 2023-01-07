@@ -21,7 +21,7 @@ public class stealTile : Card
     public override void ActionPerformed()
     {
         // transfers card to other player
-        Debug.Log("swipper no swiopingfsa");
+        Debug.Log("stealTile");
     }
 
   

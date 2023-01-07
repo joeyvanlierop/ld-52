@@ -20,9 +20,13 @@ public class Hand : MonoBehaviour
     {
         Vector3 stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
         
+        //loop to draw card game objects on the screen
         for (int i = 0; i < cards.Count; i++)
         {
+            // instantiates card object
             GameObject c = Instantiate(cards[i]);
+            
+            //moves cards to appropriate location and spacing
             c.transform.position =
                 new Vector3(cardWidth * (cards.Count / 2 - i) * (spacing / cards.Count), stageDimensions.y + yOffset, 0);
             c.GetComponent<SpriteRenderer>().sortingOrder = i;
@@ -33,5 +37,6 @@ public class Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 }
