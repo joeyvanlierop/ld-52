@@ -20,7 +20,7 @@ public abstract class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //performs card action
@@ -51,6 +51,14 @@ public abstract class Card : MonoBehaviour
         GetComponent<SpriteRenderer>().sortingOrder = originalSort;
     }
 
+    // when mouse is over the card
+    public void OnMouseOver()
+    {
+        //if mouse clicked on card it calls the action perfomed function
+        if(Input.GetMouseButtonDown(0)){
+            ActionPerformed();
+        }
+    }
 
 
 }

@@ -228,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3620904553888074607, guid: e9143ca252798834d98408d4ffe2d9a3, type: 3}
       propertyPath: cards.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3620904553888074607, guid: e9143ca252798834d98408d4ffe2d9a3, type: 3}
       propertyPath: cards.Array.data[0]

@@ -20,7 +20,8 @@ public class plant : Card
 
     public override void ActionPerformed()
     {
-        // plant wheat seed on tile
+        // plants plant
+        Debug.Log("plant");
     }
 
   
