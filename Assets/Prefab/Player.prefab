@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cdd28c52dc5de54f82478de020d331b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handPrefab: {fileID: 3620904553888074607, guid: e9143ca252798834d98408d4ffe2d9a3, type: 3}
+  ActionPoints: 0
+  turnTime: 0
+  hand: {fileID: 0}
+  playerName: 

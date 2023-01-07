@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Hand handPrefab;
 
     public float ActionPoints = 0;
 
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hand = Instantiate(handPrefab);
         
     }
 
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
 
 
     public void DrawCard(Card card) {
+        Debug.Log($"Even After After {card.name}");
         hand.AddCard(card);
     }
 }

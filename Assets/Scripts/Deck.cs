@@ -15,13 +15,13 @@ public class Deck : MonoBehaviour
 
     public List<WeightCardPrefab> weightCardPrefabs;
     public int cardCount;
-    public List<Card> cardList;
+    public List<Card> cardPrefabList;
 
 
     public void PopulateDeck() {
         IEnumerable<int> e = from weightCardPrefab in weightCardPrefabs select weightCardPrefab.weight;
         for (int i = 0; i < cardCount; i++) {
-            cardList.Add(Instantiate(GetRandomCardByWeight(e.Sum())));
+            cardPrefabList.Add(GetRandomCardByWeight(e.Sum()));
         }
     }
 
@@ -38,12 +38,12 @@ public class Deck : MonoBehaviour
     }
 
     public Card DrawNextCard() {
-        if (cardList.Count == 0) {
+        if (cardPrefabList.Count == 0) {
             return null;
         }
-        var card = cardList[0];
+        var card = cardPrefabList[0];
         Debug.Log($"before {card.name}");
-        cardList.RemoveAt(0);
+        cardPrefabList.RemoveAt(0);
         Debug.Log($"after {card.name}");
         return card;
     }

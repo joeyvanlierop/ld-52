@@ -60,7 +60,8 @@ public class Hand : MonoBehaviour
     }
 
     public void AddCard(Card card) {
-        cards.Add(card);
+        Debug.Log($"AGGG {card.name}");
+        cards.Add(Instantiate(card));
     }
 }
 

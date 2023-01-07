@@ -111,6 +111,8 @@ public class GameManager : MonoBehaviour, TimerObserver
     public void DrawCard() {
         var card = deck.DrawNextCard();
         Debug.Log($"even after {card.name}");
+        var player = players[currentPlayerIndex];
+        Debug.Log($"even after {player.playerName}");
         players[currentPlayerIndex].DrawCard(card);
         Debug.Log("Draw");
     }
