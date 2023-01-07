@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3564386543106003478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3564386543106003472}
+  - component: {fileID: 3564386543106003473}
+  - component: {fileID: 3564386543106003475}
+  m_Layer: 0
+  m_Name: CropManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3564386543106003472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3564386543106003478}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.034076236, y: 1.0184137, z: 0.48420927}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3564386543106003473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3564386543106003478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907a239bd40333a4ca932b99f7b42177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3564386543106003475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3564386543106003478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d97ae200d8c9d46bd32c9539497346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabled: 1
+  highlightTile: {fileID: 11400000, guid: 968c09c7408f64c418f65e2e27278bfd, type: 2}
+  blacklistTile: {fileID: 11400000, guid: d47c83d3fa0d6104cbfd9ec00ae5d7b3, type: 2}
+  offset: {x: 0, y: 0, z: 0}
+  groundTilemaps:
+  - {fileID: 0}
+  obstacleTilemaps:
+  - {fileID: 0}
+  - {fileID: 0}
+  blacklistedTiles:
+  - {fileID: 11400000, guid: 324351bfaa98ba74da7d4a996a7f81ec, type: 2}
+  - {fileID: 11400000, guid: 5e529575f2a9f7a458694b6f555c77f2, type: 2}
+  - {fileID: 11400000, guid: e0ea12f3315784c48a5dc1faa451a005, type: 2}
+  - {fileID: 11400000, guid: 7d8377b934cc510408909561597d391c, type: 2}
+  - {fileID: 11400000, guid: 0915f786560c60542b87d295b122981d, type: 2}
+  - {fileID: 11400000, guid: b46d8c614a951fa4793eb2762b8a85fe, type: 2}
+  - {fileID: 11400000, guid: b8d4de7371d0b2446a40833e3ad56178, type: 2}
+  - {fileID: 11400000, guid: 71f2561a9bdccd24a86ba2ab48479a40, type: 2}
+  - {fileID: 11400000, guid: eed7e356b34fd1b44909601470ac9544, type: 2}
+  - {fileID: 11400000, guid: 6d0520c7e4d2f984b9d68426519116ef, type: 2}
