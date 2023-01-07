@@ -24,4 +24,9 @@ public class Player : MonoBehaviour
     {
         
     }
+
+
+    public void DrawCard(Card card) {
+        hand.AddCard(card);
+    }
 }

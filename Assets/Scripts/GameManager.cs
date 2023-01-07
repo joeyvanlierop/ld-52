@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     public Canvas transitionScreenPrefab;
     public Canvas generalUiPrefab;
     public Timer turnTimerPrefab;
-
+    
     // Members
     public float kDefaultTurnTimer = 50;
     public float transitionTime = 5;
@@ -56,7 +56,10 @@ public class GameManager : MonoBehaviour, TimerObserver
 
 
         generalUi = Instantiate(generalUiPrefab);
-        generalUi.GetComponentInChildren<Button>().onClick.AddListener(Transition);
+        List<Button> buttons = new List<Button>();
+        generalUi.GetComponentsInChildren<Button>(buttons);
+        buttons.Find(b => b.name == "EndTurnButton").onClick.AddListener(Transition);
+        buttons.Find(b => b.name == "DrawCardButton").onClick.AddListener(DrawCard);
         generalUi.enabled = false;
     
 
@@ -84,8 +87,6 @@ public class GameManager : MonoBehaviour, TimerObserver
             text = $"Move away from the screen.\n It is now {players[currentPlayerIndex].playerName}'s turn!";
         }
         transitionScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = text;
-        // transitionScreen.enabled = true;
-        Debug.Log("Start");
     }
 
 
@@ -95,7 +96,6 @@ public class GameManager : MonoBehaviour, TimerObserver
         transitionScreen.GetComponent<Image>().color = new Color(0,0,0,0);
         timer.StartTimer(kDefaultTurnTimer);
         transitionScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
-        Debug.Log("End");
     }
 
 
@@ -103,9 +103,13 @@ public class GameManager : MonoBehaviour, TimerObserver
         Transition();
     }
 
+    public void DrawCard() {
+
+        Debug.Log("Draw");
+    }
+
 
     public void Transition() {
-        // timer.PauseTimer();
         if (!inTransition) {
             currentPlayerIndex++;
             if (currentPlayerIndex == playerCount) {

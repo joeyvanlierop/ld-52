@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Hand : MonoBehaviour
 {
-    public List<GameObject> cards;
+    public List<Card> cards;
     public float spacing = 1;
     public float yOffset = 1;
     public float cardWidth = 3;
@@ -38,7 +38,7 @@ public class Hand : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
         {
             // instantiates card object
-            GameObject c = Instantiate(cards[i], gameObject.transform, true);
+            Card c = Instantiate(cards[i], gameObject.transform, true);
 
             //moves cards to appropriate location and spacing
             c.transform.position =
@@ -57,6 +57,10 @@ public class Hand : MonoBehaviour
     public void bringHandFromNarnia()
     {
       
+    }
+
+    public void AddCard(Card card) {
+        cards.Add(card);
     }
 }
 
