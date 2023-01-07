@@ -22,7 +22,7 @@ public class Hand : MonoBehaviour
         
         for (int i = 0; i < cards.Count; i++)
         {
-            GameObject c = Instantiate(cards[i]);
+            GameObject c = Instantiate(cards[i], gameObject.transform, true);
             c.transform.position =
                 new Vector3(cardWidth * (cards.Count / 2 - i) * (spacing / cards.Count), stageDimensions.y + yOffset, 0);
             c.GetComponent<SpriteRenderer>().sortingOrder = i;
