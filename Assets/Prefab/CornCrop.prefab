@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 815529833774280146}
   m_Layer: 0
   m_Name: CornCrop
-  m_TagString: Untagged
+  m_TagString: Crop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,9 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2142658685016124050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 217515d18d7ea3c4d90ab04cb761d179, type: 3}
+  m_Script: {fileID: 11500000, guid: 39bae6981c22ee246bfbec1972fde022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  tile: {fileID: 11400000, guid: 8d4170f17f56c7846b0c2f8e6b02c5a2, type: 2}
+  tile: {fileID: 11400000, guid: 7039a1630f09edc4f8da22d9bfe8dde7, type: 2}
