@@ -24,7 +24,12 @@ public abstract class Card : MonoBehaviour
 
     public abstract void ActionPerformed(); //performs card action and then calls removeFromDeck to put card in discard
 
-    public abstract void cardGrowBig(); //function for card to grow bigger when hovered over
+    public void cardGrowBig()
+    {
+        float ScaleX = 1.3f;
+        float ScaleY = 1.3f;
+        transform.localScale = new Vector2(transform.localScale.x * ScaleX, transform.localScale.y * ScaleY);
+    }//function for card to grow bigger when hovered over
 
     public abstract void removeFromDeck(); //puts card in discard pile
 
