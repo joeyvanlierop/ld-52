@@ -28,6 +28,17 @@ public class Player : MonoBehaviour
     }
 
 
+    public void HideHand() {
+        hand.Hide();
+    }
+
+    public void ShowHand() {
+        hand.Show();
+    }
+
+
+
+
     public void DrawCard(Card card) {
         Debug.Log($"Even After After {card.name}");
         hand.AddCard(card);

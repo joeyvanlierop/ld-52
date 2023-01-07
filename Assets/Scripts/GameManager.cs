@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour, TimerObserver
         transitionScreen.GetComponent<Image>().color = new Color(0,0,0,0);
         timer.StartTimer(kDefaultTurnTimer);
         transitionScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
+        players[currentPlayerIndex].ShowHand();
     }
 
 
@@ -110,9 +111,7 @@ public class GameManager : MonoBehaviour, TimerObserver
 
     public void DrawCard() {
         var card = deck.DrawNextCard();
-        Debug.Log($"even after {card.name}");
         var player = players[currentPlayerIndex];
-        Debug.Log($"even after {player.playerName}");
         players[currentPlayerIndex].DrawCard(card);
         Debug.Log("Draw");
     }
@@ -120,6 +119,7 @@ public class GameManager : MonoBehaviour, TimerObserver
 
     public void Transition() {
         if (!inTransition) {
+            players[currentPlayerIndex].HideHand();
             currentPlayerIndex++;
             if (currentPlayerIndex == playerCount) {
                 currentPlayerIndex = 0;

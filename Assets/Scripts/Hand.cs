@@ -14,7 +14,7 @@ public class Hand : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Layout();
+        // Layout();
     }
     
     // Update is called once per frame
@@ -38,7 +38,8 @@ public class Hand : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
         {
             // instantiates card object
-            Card c = Instantiate(cards[i], gameObject.transform, true);
+            // Card c = Instantiate(cards[i], gameObject.transform, true);
+            Card c = cards[i];
 
             //moves cards to appropriate location and spacing
             c.transform.position =
@@ -59,9 +60,28 @@ public class Hand : MonoBehaviour
       
     }
 
+
+    public void Show() {
+        var renderers = this.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var renderer in renderers) {
+            renderer.enabled = true;
+        }
+    }
+
+    public void Hide() {
+        var renderers = this.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var renderer in renderers) {
+            renderer.enabled = false;
+        }
+    }
+
     public void AddCard(Card card) {
         Debug.Log($"AGGG {card.name}");
-        cards.Add(Instantiate(card));
+        var c = Instantiate(card);
+        c.transform.SetParent(this.transform);
+        cards.Add(c);
+
+        Layout();
     }
 }
 
