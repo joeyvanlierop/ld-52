@@ -26,7 +26,7 @@ public abstract class Card : MonoBehaviour
 
     public abstract void cardGrowBig(); //function for card to grow bigger when hovered over
 
-    public abstract void removeFromDeck(); //puts card in discard
+    public abstract void removeFromDeck(); //puts card in discard pile
 
     public abstract void addToDeck(); //adds card to deck, changes cardLocation variable.
 
