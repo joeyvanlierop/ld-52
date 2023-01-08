@@ -92,6 +92,13 @@ public class Hand : MonoBehaviour
         cards.Add(c);
         Layout();
     }
+
+    public void RemoveCard(Card card)
+    {
+        cards.Remove(card);
+        Destroy(card.gameObject);
+        Layout();
+    }
 }
 
 

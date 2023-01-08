@@ -98,4 +98,16 @@ public class CropManager : MonoBehaviour
 
         return true;
     }
+
+    public bool IsWaterTile(Vector3Int position)
+    {
+        foreach (var tilemap in groundTilemaps)
+        {
+            //blacklisted tiles are the water ones
+            if (blacklistedTiles.Contains(tilemap.GetTile(position)))
+                return true;
+        }
+
+        return false;
+    }
 }

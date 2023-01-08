@@ -109,11 +109,16 @@ public abstract class Card : MonoBehaviour
         HighlightEffect hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
         CropManager cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
         Vector3Int position = hf.GetHighlightPosition();
+        
         if (!IsValid(cm, position))
             return;
         // Only play the card if the player is able to
         if (player.PlayCard(this)) {
             ActionPerformed(position);
+            Instantiate(Resources.Load("RipCard"), transform.position, transform.rotation);
+            
+            GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            gm.players[gm.currentPlayerIndex].hand.RemoveCard(this);
         }
     }
 

@@ -28,8 +28,6 @@ public class GameManager : MonoBehaviour, TimerObserver
     public HighlightEffect highlightEffect;
     public TMPro.TextMeshPro actionPointsText; 
     
-
-
     public int currentPlayerIndex = 0;
     private string[] names = {"joe", "mama", "ben", "dover"};
     private bool inTransition = true;

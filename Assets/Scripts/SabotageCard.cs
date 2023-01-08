@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StealCard : Card
+public class SabotageCard : Card
 {
     
     new void Start()
@@ -14,8 +14,7 @@ public class StealCard : Card
     public override void ActionPerformed(Vector3Int position)
     {
         CropManager cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
-        GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        cm.SetOwner(position, gm.currentPlayerIndex);
+        cm.RemoveCrop(position);
     }
 
     protected override bool IsValid(CropManager cm, Vector3Int position)

@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
 
 
     public void DrawCard(Card card) {
-        Debug.Log($"Even After After {card.name}");
         hand.AddCard(card, this);
     }
 }
