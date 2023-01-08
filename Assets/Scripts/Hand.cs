@@ -85,11 +85,11 @@ public class Hand : MonoBehaviour
         }
     }
 
-    public void AddCard(Card card) {
+    public void AddCard(Card card, Player player) {
         var c = Instantiate(card);
+        c.RegisterPlayer(player);
         c.transform.SetParent(this.transform);
         cards.Add(c);
-
         Layout();
     }
 }

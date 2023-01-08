@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     public Deck deck;
     public CropManager cropManager;
     public HighlightEffect highlightEffect;
+    public TMPro.TextMeshPro actionPointsText; 
     
 
 
@@ -86,7 +87,6 @@ public class GameManager : MonoBehaviour, TimerObserver
             pointsTexts.Add(pointsText);
         }
 
-
         StartTransition(true);
     }
 
@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour, TimerObserver
         transitionScreen.GetComponent<Image>().color = new Color(0,0,0,0);
         timer.StartTimer(kDefaultTurnTimer);
         transitionScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
+        Debug.Log($"{players[currentPlayerIndex].playerName}'s points: {players[currentPlayerIndex].actionPoints}");
         highlightEffect.active = true;
         players[currentPlayerIndex].ShowHand();
     }

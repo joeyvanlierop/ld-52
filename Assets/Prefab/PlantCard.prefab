@@ -133,4 +133,5 @@ MonoBehaviour:
   originalPOS: {x: -9.01, y: -4.54, z: 0}
   originalSort: 58
   hoverMovement: {x: 0, y: 1, z: -1}
+  actionPoints: 3
   cornCrop: {fileID: 2142658685016124050, guid: fea86a12e07a9064cb8c573d91589631, type: 3}
