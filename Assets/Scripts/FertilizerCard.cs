@@ -17,8 +17,8 @@ public class FertilizerCard : Card
             crop.fullGrown = true;
         }
     }
-
-    protected override bool IsValid(CropManager cm, Vector3Int position)
+    
+    public override bool IsValid(CropManager cm, Vector3Int position)
     {
         if (!cm.GetCrop(position, out var crop) || crop.fullGrown)
             return false;

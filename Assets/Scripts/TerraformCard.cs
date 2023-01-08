@@ -15,7 +15,7 @@ public class TerraformCard : Card
         cm.SetOwner(position, gm.currentPlayerIndex);
     }
 
-    protected override bool IsValid(CropManager cm, Vector3Int position)
+    public override bool IsValid(CropManager cm, Vector3Int position)
     {
         return cm.IsObstacle(position);
     }

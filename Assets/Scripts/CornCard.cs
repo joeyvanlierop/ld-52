@@ -14,8 +14,8 @@ public class CornCard : Card
         var cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
         cm.AddCrop(position, cornCrop);
     }
-
-    protected override bool IsValid(CropManager cm, Vector3Int position)
+    
+    public override bool IsValid(CropManager cm, Vector3Int position)
     {
         if (!cm.IsValidTile(position))
             return false;

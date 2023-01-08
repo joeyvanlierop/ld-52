@@ -17,6 +17,7 @@ public abstract class Card : MonoBehaviour
     protected LineRenderer lr;
     protected Player player;
     protected Vector2 startPosition;
+    protected bool lockPopup = false;
 
 
     protected void Start()
@@ -32,30 +33,35 @@ public abstract class Card : MonoBehaviour
     {
         if (lr.enabled)
         {
-            var hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
-            var cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
-            var position = hf.GetHighlightPosition();
-
-            if (IsValid(cm, position))
+            HighlightEffect hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
+            CropManager cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
+            Vector3Int position = hf.GetHighlightPosition();
+            
+            hf.isValidTile = IsValid(cm, position);
+            hf.hovering = true;
+            if (IsValid(cm, position)) {
                 lr.material = greenMaterial;
-            else
+            } else { 
                 lr.material = redMaterial;
-
+            }
+            
             startPosition = gameObject.transform.position;
             lr.SetPosition(0, startPosition);
             endPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             lr.SetPosition(1, endPosition);
+        } else {
+            HighlightEffect hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
+            hf.hovering = false;
         }
     }
-
-    private void OnMouseDown()
-    {
-        lr.enabled = true;
-    }
-
+    
+    public abstract bool IsValid(CropManager cm, Vector3Int position);
 
     public void OnMouseEnter()
     {
+        if (lockPopup)
+            return;
+        
         //getting original position and sorting order of card
         originalPOS = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         originalSort = GetComponent<SpriteRenderer>().sortingOrder;
@@ -73,6 +79,9 @@ public abstract class Card : MonoBehaviour
 
     public void OnMouseExit()
     {
+        if (lockPopup)
+            return;
+        
         // makes card smaller when mouse leaves it
         transform.localScale =
             new Vector2(transform.localScale.x - scaleChange.x, transform.localScale.y - scaleChange.y);
@@ -82,8 +91,23 @@ public abstract class Card : MonoBehaviour
         GetComponent<SpriteRenderer>().sortingOrder = originalSort;
     }
 
+    private void OnMouseDown()
+    {
+        lr.enabled = true;
+        lockPopup = true;
+    }
+    
     private void OnMouseUp()
     {
+        if (lockPopup)
+        {
+            transform.localScale =
+                new Vector2(transform.localScale.x - scaleChange.x, transform.localScale.y - scaleChange.y);
+            transform.position = originalPOS;
+            GetComponent<SpriteRenderer>().sortingOrder = originalSort;
+            lockPopup = false;
+        }
+        
         lr.enabled = false;
         var hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
         var cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
@@ -100,13 +124,6 @@ public abstract class Card : MonoBehaviour
             var gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             gm.players[gm.currentPlayerIndex].hand.RemoveCard(this);
         }
-    }
-
-    protected virtual bool IsValid(CropManager cm, Vector3Int position)
-    {
-        if (cm.IsValidTile(position))
-            return true;
-        return false;
     }
 
     //performs card action

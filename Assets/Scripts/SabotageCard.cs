@@ -13,7 +13,7 @@ public class SabotageCard : Card
         cm.RemoveCrop(position);
     }
 
-    protected override bool IsValid(CropManager cm, Vector3Int position)
+    public override bool IsValid(CropManager cm, Vector3Int position)
     {
         var gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         if (cm.GetOwner(position, out var owner) && owner != gm.currentPlayerIndex)

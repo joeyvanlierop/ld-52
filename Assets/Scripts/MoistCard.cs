@@ -14,8 +14,8 @@ public class MoistCard : Card
         var cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
         cm.AddCrop(position, MoistCrop);
     }
-
-    protected override bool IsValid(CropManager cm, Vector3Int position)
+    
+    public override bool IsValid(CropManager cm, Vector3Int position)
     {
         if (!cm.IsWaterTile(position))
             return false;
