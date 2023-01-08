@@ -22,9 +22,8 @@ public class CornCrop : Crop
     }
 
     public override void OnHarvest()
-    {   
-        //destroys crop
-        Destroy(gameObject);
-
+    {
+        CropManager cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
+        cm.RemoveCrop(GetPosition());
     }
 }
