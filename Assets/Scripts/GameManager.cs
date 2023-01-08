@@ -132,7 +132,6 @@ public class GameManager : MonoBehaviour, TimerObserver
         var card = deck.DrawNextCard();
         var player = players[currentPlayerIndex];
         players[currentPlayerIndex].DrawCard(card);
-        Debug.Log("Draw");
     }
 
 

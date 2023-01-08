@@ -10,20 +10,22 @@ public abstract class Crop : MonoBehaviour
     public TilemapRenderer render;
     public int points;
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void Spawn() {
         tilemap.tileAnchor = new Vector3(0.5f, 0.5f, -1.9f);
-        var position = Vector3Int.FloorToInt(transform.position);
-        tilemap.SetTile(position, tile);
-        tilemap.SetColor(position, Color.red);
+        tilemap.SetTile(GetPosition(), tile);
     }
 
+    public void Despawn()
+    {
+        var position = Vector3Int.FloorToInt(transform.position);
+        tilemap.SetTile(GetPosition(), null);
+    }
+
+    protected Vector3Int GetPosition()
+    {
+        return Vector3Int.FloorToInt(transform.position);
+    }
+    
     public abstract void OnTurn();
     
     public abstract void OnHarvest();

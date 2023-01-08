@@ -27,8 +27,7 @@ public class CropManager : MonoBehaviour
     
     public void SetOwner(Vector3Int position, int playerIndex)
     {
-        Debug.Log(playerIndex);
-        owners.Add(position, playerIndex);
+        owners[position] = playerIndex;
         ownerTilemap.SetTile(position, ownerTiles[playerIndex]);
     }
 
@@ -52,7 +51,7 @@ public class CropManager : MonoBehaviour
     {
         if (!crops.TryGetValue(position, out var crop))
             return;
-        Destroy(crop);
+        crop.Despawn();
         crops.Remove(position);
     }
 
