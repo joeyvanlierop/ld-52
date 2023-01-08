@@ -9,12 +9,12 @@ public abstract class Card : MonoBehaviour
     protected Vector2 startPosition;
     protected Vector2 endPosition;
     protected Player player;
+    protected HighlightEffect effect;
 
     public Material redMaterial;
     public Material greenMaterial;
     public float width = 0.25f;
     
-    public int cost;
     public Vector2 scaleChange; // creates scale change variable (values assigned in unity)
     public bool mouseOver;
     public Vector3 originalPOS; //original card position
@@ -40,25 +40,31 @@ public abstract class Card : MonoBehaviour
             HighlightEffect hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
             CropManager cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
             Vector3Int position = hf.GetHighlightPosition();
-
-            if (IsValid(cm, position))
+            
+            hf.isValidTile = IsValid(cm, position);
+            hf.hovering = true;
+            if (IsValid(cm, position)) {
                 lr.material = greenMaterial;
-            else 
+            } else { 
                 lr.material = redMaterial;
+            }
             
             startPosition = gameObject.transform.position;
             lr.SetPosition(0, startPosition);
             endPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             lr.SetPosition(1, endPosition);
+        } else {
+            HighlightEffect hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
+            hf.hovering = false;
         }
     }
     
-    protected virtual bool IsValid(CropManager cm, Vector3Int position)
-    {
-        if (cm.IsValidTile(position))
-            return true;
-        return false;
-    }
+    public abstract bool IsValid(CropManager cm, Vector3Int position);
+    // {
+    //     if (cm.IsValidTile(position))
+    //         return true;
+    //     return false;
+    // }
 
     //performs card action
     public abstract void ActionPerformed(Vector3Int position);

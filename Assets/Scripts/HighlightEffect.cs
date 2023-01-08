@@ -8,9 +8,12 @@ public class HighlightEffect : MonoBehaviour
   CropManager cropManager;
 
   public bool active = true;
+  public Card draggedCard = null;
   public Tile highlightTile;
   public Tile blacklistTile;
   public Vector3Int offset = Vector3Int.zero;
+  public bool isValidTile = false;
+  public bool hovering = false;
 
   void Start()
   {
@@ -23,11 +26,13 @@ public class HighlightEffect : MonoBehaviour
     if (!active)
       return;
 
+
+
     highlightTileMap.ClearAllTiles();
 
     var highlightPosition = GetHighlightPosition();
 
-    if (cropManager.IsValidTile(highlightPosition))
+    if (isValidTile)
       highlightTileMap.SetTile(highlightPosition, highlightTile);
     else
       highlightTileMap.SetTile(highlightPosition, blacklistTile);

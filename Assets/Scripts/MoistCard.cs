@@ -15,7 +15,7 @@ public class MoistCard : Card
         cm.AddCrop(position, MoistCrop);
     }
     
-    protected override bool IsValid(CropManager cm, Vector3Int position)
+    public override bool IsValid(CropManager cm, Vector3Int position)
     {
         if (!cm.IsWaterTile(position))
             return false;
