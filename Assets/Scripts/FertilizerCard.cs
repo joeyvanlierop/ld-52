@@ -23,7 +23,7 @@ public class FertilizerCard : Card
         if (!cm.IsValidTile(position))
             return false;
 
-        if (cm.GetCrop(position, out var crop))
+        if (cm.GetCrop(position, out var crop) && crop.fullGrown)
             return false;
 
         GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
