@@ -34,9 +34,9 @@ public class HarvestCard : Card
             //iterating for adjacents on x axis
             foreach (int a in adj)
             {
-                position = new Vector3Int(position.x + a, position.y);
+                var newPosition = new Vector3Int(position.x + a, position.y);
                 //cheching if a crop is on tile
-                if (cm.GetCrop(position, out crop))
+                if (cm.GetCrop(newPosition, out crop))
                 {
                     // calls onharvest to harvest plant
                     crop.OnHarvest();
@@ -49,9 +49,9 @@ public class HarvestCard : Card
             //iterating for adjacents on y axis
             foreach (int a in adj)
             {
-                position = new Vector3Int(position.x, position.y + a);
+                var newPosition = new Vector3Int(position.x, position.y + a);
                 //cheching if a crop is on tile
-                if (cm.GetCrop(position, out crop))
+                if (cm.GetCrop(newPosition, out crop))
                 {
                     // calls onharvest to harvest plant
                     crop.OnHarvest();
