@@ -18,7 +18,6 @@ public class MoistCrop : Crop
             tilemap.tileAnchor = new Vector3(0.5f, 0.5f, 0);
             render.sortingOrder = 1;
         }
-        Debug.Log("I am a water crop");
     }
 
     public override void OnHarvest()

@@ -42,9 +42,7 @@ public class Deck : MonoBehaviour
             return null;
         }
         var card = cardPrefabList[0];
-        Debug.Log($"before {card.name}");
         cardPrefabList.RemoveAt(0);
-        Debug.Log($"after {card.name}");
         return card;
     }
 
