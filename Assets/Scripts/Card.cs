@@ -26,6 +26,7 @@ public abstract class Card : MonoBehaviour
         lr.widthMultiplier = width;
         lr.enabled = false;
         lr.numCapVertices = 20;
+        lr.sortingOrder = 10;
     }
 
     void Update()
