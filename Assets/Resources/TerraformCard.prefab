@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 34
-  m_Sprite: {fileID: -139054994, guid: 1a808f42c46b7c44da0d53767e1271bd, type: 3}
-  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
+  m_Sprite: {fileID: -1318268009, guid: 1a808f42c46b7c44da0d53767e1271bd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,3 +133,4 @@ MonoBehaviour:
   originalPOS: {x: 0, y: 0, z: 0}
   originalSort: 0
   hoverMovement: {x: 0, y: 1, z: -1}
+  actionPoints: 0

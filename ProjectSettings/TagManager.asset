@@ -15,6 +15,7 @@ TagManager:
   - Content
   - Names
   - MainMenu
+  - ActionPoints
   layers:
   - Default
   - TransparentFX

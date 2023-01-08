@@ -36,9 +36,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -2499,7 +2499,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pixelCardAssest_V01_45: 260885670
       pixelCardAssest_V01_19: -1351747681
       pixelCardAssest_V01_43: 1383470138
       pixelCardAssest_V01_25: 868666687
@@ -2582,8 +2581,9 @@ TextureImporter:
       pixelCardAssest_V01_23: -787887736
       pixelCardAssest_V01_78: -912831157
       pixelCardAssest_V01_11: 296758406
-      pixelCardAssest_V01_14: 328249292
+      pixelCardAssest_V01_45: 260885670
       pixelCardAssest_V01_28: 1285688106
+      pixelCardAssest_V01_14: 328249292
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

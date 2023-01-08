@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     private bool inTransition = true;
     private readonly string[] default_names = { "joe", "mama", "ben", "dover" };
     private readonly List<GameObject> pointsTexts = new();
+    private RectTransform actionPoints;
 
 
     // Start is called before the first frame update
@@ -82,6 +83,8 @@ public class GameManager : MonoBehaviour, TimerObserver
         buttons.Find(b => b.name == "EndTurnButton").onClick.AddListener(Transition);
         buttons.Find(b => b.name == "DrawCardButton").onClick.AddListener(DrawCard);
         generalUi.enabled = false;
+        actionPoints = GameObject.FindGameObjectWithTag("ActionPoints").GetComponent<RectTransform>();
+
 
         deck = Instantiate(deckPrefab);
         deck.PopulateDeck();
@@ -138,6 +141,7 @@ public class GameManager : MonoBehaviour, TimerObserver
         highlightEffect.active = true;
         players[currentPlayerIndex].ShowHand();
         players[currentPlayerIndex].actionPoints += actionPointsTurnRefresh;
+        NotifyActionPointsChanged();
     }
 
     public void DrawCard()
@@ -174,7 +178,9 @@ public class GameManager : MonoBehaviour, TimerObserver
 
 
 
-    public void NotifyActionPointsChanged() {
+    public void NotifyActionPointsChanged()
+    {
+        actionPoints.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50 * players[currentPlayerIndex].actionPoints);
         Debug.Log($"{players[currentPlayerIndex].playerName}'s points: {players[currentPlayerIndex].actionPoints}");
     }
 }
