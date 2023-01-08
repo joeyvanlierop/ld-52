@@ -38,6 +38,7 @@ public class Hand : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
         {
             // instantiates card object
+            // Card c = Instantiate(cards[i], gameObject.transform, true);
             Card c = cards[i];
 
             //moves cards to appropriate location and spacing
@@ -60,14 +61,16 @@ public class Hand : MonoBehaviour
     }
 
 
-    public void Show() {
+    public void Show() 
+    {
         var renderers = this.GetComponentsInChildren<SpriteRenderer>();
         foreach (var renderer in renderers) {
             renderer.enabled = true;
         }
     }
 
-    public void Hide() {
+    public void Hide() 
+    {
         var renderers = this.GetComponentsInChildren<SpriteRenderer>();
         foreach (var renderer in renderers) {
             renderer.enabled = false;

@@ -30,10 +30,10 @@ public class HarvestCard : Card
             //list for adjacent tile iteration
             List<int> adj = new List<int>{
                 -1,1
-            }
+            };
 
             //iterating for adjacents on x axis
-            foreach (a in adj)
+            foreach (int a in adj)
             {   
                 position = new Vector3Int(position.x+a,position.y);
                 //cheching if a crop is on tile
@@ -48,7 +48,7 @@ public class HarvestCard : Card
             }
 
             //iterating for adjacents on y axis
-            foreach (a in adj)
+            foreach (int a in adj)
             {   
                 position = new Vector3Int(position.x,position.y+a);
                 //cheching if a crop is on tile
