@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 34
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.00005531311, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -124,8 +124,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5335b4e93197143b62c1b90479bcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 1299e0a447506a64889ac568aa573c2b, type: 2}
+  greenMaterial: {fileID: 2100000, guid: 74cccdcc5897e754d97287c94cd31388, type: 2}
+  width: 0.25
   cost: 0
   scaleChange: {x: 0.1, y: 0.1}
   mouseOver: 0
   originalPOS: {x: -9.01, y: -4.54, z: 0}
+  originalSort: 58
   hoverMovement: {x: 0, y: 1, z: -1}
+  cornCrop: {fileID: 2142658685016124050, guid: fea86a12e07a9064cb8c573d91589631, type: 3}

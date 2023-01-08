@@ -8,6 +8,7 @@ TagManager:
   - Crop
   - Highlight
   - Grid
+  - CropManager
   layers:
   - Default
   - TransparentFX

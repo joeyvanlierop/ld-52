@@ -17,7 +17,7 @@ public class HighlightEffect : MonoBehaviour
     public Tilemap[] groundTilemaps;
     public Tilemap[] obstacleTilemaps;
     public Tile[] blacklistedTiles;
-    public Crop cornCrop;
+    public GameObject cornCrop;
 
     void Awake()
     {
@@ -45,12 +45,9 @@ public class HighlightEffect : MonoBehaviour
         var position = GetHighlightPosition();
         if (!IsValidTile(position))
             return;
-        var crop = Instantiate(cornCrop, position, Quaternion.identity);
+        
         var new_map = Instantiate(GameObject.FindGameObjectWithTag("Crops"));
-        new_map.transform.SetParent(GameObject.FindGameObjectWithTag("Grid").transform);
-        new_map.transform.localPosition = new Vector3(0,0,0);
-        crop.tilemap = new_map.GetComponent<Tilemap>();
-        crop.render = new_map.GetComponent<TilemapRenderer>();
+        GetComponent<CropManager>().AddCrop(position, cornCrop, new_map);
     }
 
     void Update()
@@ -68,7 +65,7 @@ public class HighlightEffect : MonoBehaviour
             highlightTileMap.SetTile(highlightPosition, blacklistTile);
     }
 
-    Vector3Int GetHighlightPosition()
+    public Vector3Int GetHighlightPosition()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int highlightPosition = highlightTileMap.WorldToCell(mousePosition);
@@ -76,7 +73,7 @@ public class HighlightEffect : MonoBehaviour
         return highlightPosition;
     }
 
-    bool IsValidTile(Vector3Int position)
+    public bool IsValidTile(Vector3Int position)
     {
         foreach (var tilemap in groundTilemaps)
         {
@@ -93,10 +90,5 @@ public class HighlightEffect : MonoBehaviour
         }
         
         return true;
-    }
-
-    void PlaceTile()
-    {
-        
     }
 }

@@ -17,5 +17,8 @@ public class CornCrop : Crop
         Debug.Log("I am a corn crop");
     }
 
-    
+    public override void OnHarvest()
+    {
+        Debug.Log("Harvest");
+    }
 }
