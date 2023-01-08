@@ -9,6 +9,7 @@ public abstract class Crop : MonoBehaviour
     public Tilemap tilemap;
     public TilemapRenderer render;
     public int points;
+    public string PlantType;
 
     public void Spawn()
     {
