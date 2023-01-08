@@ -33,6 +33,7 @@ public class CropManager : MonoBehaviour
 
     public void AddCrop(Vector3Int position, GameObject cropObject)
     {
+        Debug.Log($"{position.x}, {position.y}, {position.z}");
         var cropObj = Instantiate(cropObject, position, Quaternion.identity);
         var crop = cropObj.GetComponent<Crop>();
         var cropsTilesetObject = Instantiate(GameObject.FindGameObjectWithTag("Crops"));
