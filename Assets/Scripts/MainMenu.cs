@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class MainMenu : MonoBehaviour
 {
     protected GameObject content;
@@ -31,7 +32,6 @@ public class MainMenu : MonoBehaviour
         var namesObj = GameObject.FindGameObjectsWithTag("Names");
         List<string> names = new List<string>();
         foreach (var nameObj in namesObj) {
-            Debug.Log(nameObj.GetComponentInChildren<TMPro.TMP_InputField>().text);
             names.Add(nameObj.GetComponentInChildren<TMPro.TMP_InputField>().text);
         }
         var game = Instantiate(gameManagerPrefab);
@@ -42,10 +42,29 @@ public class MainMenu : MonoBehaviour
     void AddPlayer() {
         Debug.Log("Adding");
         var playerFeilds = GameObject.FindGameObjectsWithTag("PlayerFeild");
+        if (playerFeilds.Length == 4) {
+            return;
+        }
         var lastPayerFeild = playerFeilds[playerFeilds.Length - 1];
         var new_feild = Instantiate(lastPayerFeild);
         new_feild.GetComponent<RectTransform>().SetParent(content.transform);
-        
+        new_feild.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+
+        // var namesObj = GameObject.FindGameObjectsWithTag("Names");
+        // List<string> names = new List<string>();
+        // int biggest_num = 0;
+        // foreach (var nameObj in namesObj) {
+        //     var name = nameObj.GetComponentInChildren<TMPro.TMP_InputField>().text;
+        //     if (name.Contains("Player ")) {
+        //         resultString = Int32.Parse(System.Text.RegularExpressions.Regex.Match(name, @"\d+").Value);
+        //     }
+        //     names.Add(nameObj.GetComponentInChildren<TMPro.TMP_InputField>().text);
+            
+        // }
+        // if (names.Contains(new_feild.GetComponentInChildren<TMPro.TMP_InputField>().text)) {
+        //     new_feild.GetComponentInChildren<TMPro.TMP_InputField>().text = "Player "
+        // }
+        // new_feild.GetComponentInChildren<TMPro.TMP_InputField>().text = lastPayerFeild
     }
 
     void RemovePlayer() {
