@@ -32,7 +32,7 @@ public class HarvestCard : Card
             {
                 var newPosition = new Vector3Int(position.x + a, position.y);
                 //cheching if a crop is on tile
-                if (cm.GetCrop(newPosition, out CropAdj))
+                if (cm.GetCrop(newPosition, out CropAdj) && IsValid(cm, newPosition))
                     // calls onharvest to harvest plant if adjacent plant is same plant type
                     if (CropAdj.PlantType == crop.PlantType)
                     {
@@ -45,7 +45,7 @@ public class HarvestCard : Card
             {
                 var newPosition = new Vector3Int(position.x, position.y + a);
                 //cheching if a crop is on tile
-                if (cm.GetCrop(newPosition, out CropAdj))
+                if (cm.GetCrop(newPosition, out CropAdj) && IsValid(cm, newPosition))
                     // calls onharvest to harvest plant if adjacent plant is same plant type
                     if (CropAdj.PlantType == crop.PlantType)
                     {
