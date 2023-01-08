@@ -7,22 +7,68 @@ public class MainMenu : MonoBehaviour
 {
     protected GameObject content;
     public GameManager gameManagerPrefab;
+
+    private int players = 2;
+
+    private Button startGameButton;
+    private Button addPlayerButton;
+    private Button removePlayerButton;
+
+    private List<GameObject> namesObj;
     
     // Start is called before the first frame update
     void Start()
     {
         var buttons = new List<Button>();
         this.GetComponentsInChildren(buttons);
-        buttons.Find(b => b.name == "PlayButton").onClick.AddListener(StartGame);
-        buttons.Find(b => b.name == "AddPlayerButton").onClick.AddListener(AddPlayer);
-        buttons.Find(b => b.name == "RemovePlayerButton").onClick.AddListener(RemovePlayer);
+        startGameButton = buttons.Find(b => b.name == "PlayButton");
+        startGameButton.onClick.AddListener(StartGame);
+
+        addPlayerButton = buttons.Find(b => b.name == "AddPlayerButton");
+        addPlayerButton.onClick.AddListener(AddPlayer);
+
+        removePlayerButton = buttons.Find(b => b.name == "RemovePlayerButton");
+        removePlayerButton.onClick.AddListener(RemovePlayer);
+
+
+        namesObj = new List<GameObject>(GameObject.FindGameObjectsWithTag("Names"));
+
         content = GameObject.FindGameObjectWithTag("Content");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (players <= 2) {
+            removePlayerButton.interactable = false;
+        } else {
+            removePlayerButton.interactable = true;
+        }
+
+        if (players >= 4) {
+            addPlayerButton.interactable = false;
+        } else {
+            addPlayerButton.interactable = true;
+        }
+
+        List<string> names = new List<string>();
+        foreach (var nameObj in namesObj) {
+            names.Add(nameObj.GetComponentInChildren<TMPro.TMP_InputField>().text);
+        }
+        bool found = false;
+        for (int i = 0; i < names.Count; i++) {
+            List<string> newList = new List<string>(names);
+            newList.RemoveAt(i);
+            if (newList.Contains(names[i])) {
+                found = true;
+            }
+        }
+
+        if (found) {
+            startGameButton.interactable = false;
+        } else {
+            startGameButton.interactable = true;
+        }
     }
 
 
@@ -45,26 +91,13 @@ public class MainMenu : MonoBehaviour
         if (playerFeilds.Length == 4) {
             return;
         }
+        players++;
         var lastPayerFeild = playerFeilds[playerFeilds.Length - 1];
         var new_feild = Instantiate(lastPayerFeild);
         new_feild.GetComponent<RectTransform>().SetParent(content.transform);
         new_feild.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
 
-        // var namesObj = GameObject.FindGameObjectsWithTag("Names");
-        // List<string> names = new List<string>();
-        // int biggest_num = 0;
-        // foreach (var nameObj in namesObj) {
-        //     var name = nameObj.GetComponentInChildren<TMPro.TMP_InputField>().text;
-        //     if (name.Contains("Player ")) {
-        //         resultString = Int32.Parse(System.Text.RegularExpressions.Regex.Match(name, @"\d+").Value);
-        //     }
-        //     names.Add(nameObj.GetComponentInChildren<TMPro.TMP_InputField>().text);
-            
-        // }
-        // if (names.Contains(new_feild.GetComponentInChildren<TMPro.TMP_InputField>().text)) {
-        //     new_feild.GetComponentInChildren<TMPro.TMP_InputField>().text = "Player "
-        // }
-        // new_feild.GetComponentInChildren<TMPro.TMP_InputField>().text = lastPayerFeild
+        new_feild.GetComponentInChildren<TMPro.TMP_InputField>().text = $"Player {players}";
     }
 
     void RemovePlayer() {
@@ -73,6 +106,7 @@ public class MainMenu : MonoBehaviour
         if (playerFeilds.Length <= 2) {
             return;
         }
+        players--;
         var lastPayerFeild = playerFeilds[playerFeilds.Length - 1];
         Destroy(lastPayerFeild);
     }
