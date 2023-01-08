@@ -10,6 +10,7 @@ TagManager:
   - Grid
   - CropManager
   - GameManager
+  - ActionPoints
   layers:
   - Default
   - TransparentFX
