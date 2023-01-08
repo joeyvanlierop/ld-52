@@ -154,4 +154,10 @@ public class GameManager : MonoBehaviour, TimerObserver
         players[owner].points += points;
         pointsTexts[owner].GetComponent<TextMeshPro>().text = $"{players[owner].playerName}: {players[owner].points}";
     }
+
+
+
+    public void NotifyActionPointsChanged() {
+        Debug.Log($"{players[currentPlayerIndex].playerName}'s points: {players[currentPlayerIndex].actionPoints}");
+    }
 }

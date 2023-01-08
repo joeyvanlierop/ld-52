@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public string playerName;
 
     public float points;
+    public int drawActionPoints = 1;
 
     // Start is called before the first frame update
     private void Start()
@@ -42,12 +43,22 @@ public class Player : MonoBehaviour
         var new_points = actionPoints - card.actionPoints;
         if (new_points < 0) return false;
         actionPoints = new_points;
+        NotifyActionPointsChanged();
         return true;
     }
 
 
     public void DrawCard(Card card)
     {
+        var new_points = actionPoints - drawActionPoints;
+        if (new_points < 0) return;
+        actionPoints = new_points;
+        NotifyActionPointsChanged();
         hand.AddCard(card, this);
+    }
+
+
+    public void NotifyActionPointsChanged() {
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().NotifyActionPointsChanged();
     }
 }
