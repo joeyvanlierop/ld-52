@@ -4,25 +4,29 @@ using UnityEngine.Tilemaps;
 
 public class CropManager : MonoBehaviour
 {
-    private Dictionary<Vector3Int, Crop> crops;
+    private Dictionary<Vector3Int, Crop> crops = new Dictionary<Vector3Int, Crop>();
     
     public void OnTurn()
-    {
+    {   
+        if (crops.Count == 0) {
+            return;
+        }
         foreach(Crop crop in crops.Values)
         {
             crop.OnTurn();
         }
     }
 
-    public void AddCrop(Vector3Int position, GameObject cropObject, GameObject tileStuff)
+    public void AddCrop(Vector3Int position, GameObject cropObject)
     {
         var cropObj = Instantiate(cropObject, position, Quaternion.identity);
         var crop = cropObj.GetComponent<Crop>();
-        tileStuff.transform.SetParent(GameObject.FindGameObjectWithTag("Grid").transform);
-        tileStuff.transform.localPosition = new Vector3(0,0,0);
-        crop.tilemap = tileStuff.GetComponent<Tilemap>();
-        crop.render = tileStuff.GetComponent<TilemapRenderer>();
-        crops.Add(position, crop);
+        var cropsTilesetObject = GameObject.FindGameObjectWithTag("Crops");
+        cropsTilesetObject.transform.SetParent(GameObject.FindGameObjectWithTag("Grid").transform);
+        cropsTilesetObject.transform.localPosition = new Vector3(0,0,0);
+        crop.tilemap = cropsTilesetObject.GetComponent<Tilemap>();
+        crop.render = cropsTilesetObject.GetComponent<TilemapRenderer>();
+        crops.Add(position, cropObj.GetComponent<Crop>());
     }
 
     public void RemoveCrop(Vector3Int position)
