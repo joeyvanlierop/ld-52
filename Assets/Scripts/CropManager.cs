@@ -56,6 +56,20 @@ public class CropManager : MonoBehaviour
         crops.Remove(position);
     }
 
+    public void HarvestCrop(Vector3Int position) {
+        GetCrop(position, out Crop crop);
+        var points = crop.points;
+        GetOwner(position, out var owner);
+        RemoveCrop(position);
+        NotifyHarvest(points, owner);
+    }
+
+
+    public void NotifyHarvest(float points, int owner) {
+        GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().NotifyHarvest(points, owner);
+    }
+
+
     public bool GetCrop(Vector3Int key, out Crop crop)
     {
         return crops.TryGetValue(key, out crop);
