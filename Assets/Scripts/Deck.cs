@@ -1,70 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using Random = System.Random;
 
-[System.Serializable]
-public class WeightCardPrefab {
+[Serializable]
+public class WeightCardPrefab
+{
     public int weight;
     public Card prefab;
 }
 
 public class Deck : MonoBehaviour
 {
-
     public List<WeightCardPrefab> weightCardPrefabs;
     public int cardCount;
     public List<Card> cardPrefabList;
 
-
-    public void PopulateDeck() {
-        IEnumerable<int> e = from weightCardPrefab in weightCardPrefabs select weightCardPrefab.weight;
-        for (int i = 0; i < cardCount; i++) {
-            cardPrefabList.Add(GetRandomCardByWeight(e.Sum()));
-        }
-    }
-
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 
-    public Card DrawNextCard() {
-        if (cardPrefabList.Count == 0) {
-            return null;
-        }
+
+    public void PopulateDeck()
+    {
+        var e = from weightCardPrefab in weightCardPrefabs select weightCardPrefab.weight;
+        for (var i = 0; i < cardCount; i++) cardPrefabList.Add(GetRandomCardByWeight(e.Sum()));
+    }
+
+    public Card DrawNextCard()
+    {
+        if (cardPrefabList.Count == 0) return null;
         var card = cardPrefabList[0];
         cardPrefabList.RemoveAt(0);
         return card;
     }
 
     public Card GetRandomCardByWeight(int totalWeight)
+    {
+        // totalWeight is the sum of all brokers' weight
+        var r = new Random();
+        var randomNumber = r.Next(0, totalWeight);
+
+        foreach (var prefab in weightCardPrefabs)
         {
-            // totalWeight is the sum of all brokers' weight
-            System.Random r = new System.Random(); 
-            int randomNumber = r.Next(0, totalWeight);
+            if (randomNumber <= prefab.weight) return prefab.prefab;
 
-            foreach (WeightCardPrefab prefab in weightCardPrefabs)
-            {
-                if (randomNumber <= prefab.weight)
-                {
-                    return prefab.prefab;
-                }
-
-                randomNumber = randomNumber - prefab.weight;
-            }
-
-            return default(Card);
+            randomNumber = randomNumber - prefab.weight;
         }
 
-
-
+        return default;
+    }
 }
