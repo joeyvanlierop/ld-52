@@ -18,6 +18,7 @@ public abstract class Card : MonoBehaviour
     protected Player player;
     protected Vector2 startPosition;
     protected bool lockPopup = false;
+    protected bool hovered = false;
 
 
     protected void Start()
@@ -59,6 +60,8 @@ public abstract class Card : MonoBehaviour
 
     public void OnMouseEnter()
     {
+        hovered = true;
+        
         if (lockPopup)
             return;
         
@@ -79,6 +82,8 @@ public abstract class Card : MonoBehaviour
 
     public void OnMouseExit()
     {
+        hovered = false;
+        
         if (lockPopup)
             return;
         
@@ -99,15 +104,15 @@ public abstract class Card : MonoBehaviour
     
     private void OnMouseUp()
     {
-        if (lockPopup)
+        if (lockPopup && !hovered)
         {
             transform.localScale =
                 new Vector2(transform.localScale.x - scaleChange.x, transform.localScale.y - scaleChange.y);
             transform.position = originalPOS;
             GetComponent<SpriteRenderer>().sortingOrder = originalSort;
-            lockPopup = false;
         }
-        
+        lockPopup = false;
+
         lr.enabled = false;
         var hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
         var cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
