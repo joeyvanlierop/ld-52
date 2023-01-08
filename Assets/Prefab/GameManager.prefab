@@ -49,6 +49,7 @@ MonoBehaviour:
   generalUiPrefab: {fileID: 6404403398969829490, guid: 31b4cd1bacb2f424aa2d2a61ee31dcff, type: 3}
   turnTimerPrefab: {fileID: -1922170488210695991, guid: 45f37cbc02d70494fbd3dbd35972c3b6, type: 3}
   deckPrefab: {fileID: 2331304140627111647, guid: 251ad5a9a9c40b045befca86fd2d434f, type: 3}
+  cropManagerPrefab: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
   kDefaultTurnTimer: 50
   transitionTime: 5
   playerCount: 4
@@ -57,3 +58,4 @@ MonoBehaviour:
   generalUi: {fileID: 0}
   timer: {fileID: 0}
   deck: {fileID: 0}
+  cropManager: {fileID: 0}

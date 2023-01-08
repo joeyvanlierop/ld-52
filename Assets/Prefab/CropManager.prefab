@@ -77,3 +77,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71f2561a9bdccd24a86ba2ab48479a40, type: 2}
   - {fileID: 11400000, guid: eed7e356b34fd1b44909601470ac9544, type: 2}
   - {fileID: 11400000, guid: 6d0520c7e4d2f984b9d68426519116ef, type: 2}
+  cornCrop: {fileID: 2142658685016124050, guid: fea86a12e07a9064cb8c573d91589631, type: 3}

@@ -17,7 +17,7 @@ public class HighlightEffect : MonoBehaviour
     public Tilemap[] groundTilemaps;
     public Tilemap[] obstacleTilemaps;
     public Tile[] blacklistedTiles;
-    public GameObject cornCrop;
+    public Crop cornCrop;
 
     void Awake()
     {
@@ -45,7 +45,12 @@ public class HighlightEffect : MonoBehaviour
         var position = GetHighlightPosition();
         if (!IsValidTile(position))
             return;
-        Instantiate(cornCrop, position, Quaternion.identity);
+        var crop = Instantiate(cornCrop, position, Quaternion.identity);
+        var new_map = Instantiate(GameObject.FindGameObjectWithTag("Crops"));
+        new_map.transform.SetParent(GameObject.FindGameObjectWithTag("Grid").transform);
+        new_map.transform.localPosition = new Vector3(0,0,0);
+        crop.tilemap = new_map.GetComponent<Tilemap>();
+        crop.render = new_map.GetComponent<TilemapRenderer>();
     }
 
     void Update()

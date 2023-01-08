@@ -38,7 +38,6 @@ public class Hand : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
         {
             // instantiates card object
-            // Card c = Instantiate(cards[i], gameObject.transform, true);
             Card c = cards[i];
 
             //moves cards to appropriate location and spacing

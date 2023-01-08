@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour, TimerObserver
     public Canvas generalUi;
     public Timer timer;
     public Deck deck;
+    public CropManager cropManager;
+    public HighlightEffect highlightEffect;
     
 
 
@@ -66,7 +68,9 @@ public class GameManager : MonoBehaviour, TimerObserver
 
         deck = Instantiate(deckPrefab);
         deck.PopulateDeck();
-    
+
+        cropManager = FindObjectOfType<CropManager>();
+        highlightEffect = FindObjectOfType<HighlightEffect>();
 
 
         StartTransition(true);
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour, TimerObserver
 
     void StartTransition(bool first = false) {
         generalUi.enabled = false;
+        highlightEffect.enabled = false;
         transitionScreen.enabled = true;
         timer.StartTimer(transitionTime);
         transitionScreen.GetComponent<Image>().color = new Color(0,0,0,255);
@@ -92,6 +97,7 @@ public class GameManager : MonoBehaviour, TimerObserver
             text = $"Move away from the screen.\n It is now {players[currentPlayerIndex].playerName}'s turn!";
         }
         transitionScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = text;
+        cropManager.OnTurn();
     }
 
 
@@ -101,6 +107,7 @@ public class GameManager : MonoBehaviour, TimerObserver
         transitionScreen.GetComponent<Image>().color = new Color(0,0,0,0);
         timer.StartTimer(kDefaultTurnTimer);
         transitionScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
+        highlightEffect.enabled = true;
         players[currentPlayerIndex].ShowHand();
     }
 
