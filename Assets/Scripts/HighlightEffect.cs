@@ -63,7 +63,7 @@ public class HighlightEffect : MonoBehaviour
             highlightTileMap.SetTile(highlightPosition, blacklistTile);
     }
 
-    Vector3Int GetHighlightPosition()
+    public Vector3Int GetHighlightPosition()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int highlightPosition = highlightTileMap.WorldToCell(mousePosition);
@@ -71,7 +71,7 @@ public class HighlightEffect : MonoBehaviour
         return highlightPosition;
     }
 
-    bool IsValidTile(Vector3Int position)
+    public bool IsValidTile(Vector3Int position)
     {
         foreach (var tilemap in groundTilemaps)
         {

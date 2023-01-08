@@ -6,19 +6,12 @@ using UnityEngine;
 public class stealTile : Card
 {
     
-    // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        
+        base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public override void ActionPerformed()
+    public override void ActionPerformed(Vector3Int position)
     {
         // transfers card to other player
         Debug.Log("stealTile");

@@ -7,6 +7,7 @@ TagManager:
   - Crops
   - Crop
   - Highlight
+  - CropManager
   layers:
   - Default
   - TransparentFX

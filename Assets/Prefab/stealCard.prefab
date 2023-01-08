@@ -124,8 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ef7049960010b4b887ac4a8b80d80e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 1299e0a447506a64889ac568aa573c2b, type: 2}
+  greenMaterial: {fileID: 2100000, guid: 74cccdcc5897e754d97287c94cd31388, type: 2}
+  width: 0.25
   cost: 0
   scaleChange: {x: 0.1, y: 0.1}
   mouseOver: 0
   originalPOS: {x: 0, y: 0, z: 0}
+  originalSort: 0
   hoverMovement: {x: 0, y: 1, z: -1}
