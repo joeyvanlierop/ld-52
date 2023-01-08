@@ -85,15 +85,6 @@ public abstract class Card : MonoBehaviour
         GetComponent<SpriteRenderer>().sortingOrder = originalSort;
     }
 
-    // // when mouse is over the card
-    // public void OnMouseOver()
-    // {
-    //     //if mouse clicked on card it calls the action perfomed function
-    //     if(Input.GetMouseButtonDown(0)){
-    //         ActionPerformed();
-    //     }
-    // }
-
     void OnMouseDown()
     {
         lr.enabled = true;
