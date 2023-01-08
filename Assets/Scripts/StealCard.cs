@@ -13,12 +13,17 @@ public class StealCard : Card
 
     public override void ActionPerformed(Vector3Int position)
     {
-        // transfers card to other player
-        Debug.Log("stealTile");
+        CropManager cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
+        GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        cm.SetOwner(position, gm.currentPlayerIndex);
     }
 
     protected override bool IsValid(CropManager cm, Vector3Int position)
     {
+        GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        if (cm.GetOwner(position, out var owner) && owner != gm.currentPlayerIndex)
+            return true;
+
         return false;
     }
 }
