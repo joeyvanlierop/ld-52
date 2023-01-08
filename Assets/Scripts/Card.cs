@@ -5,9 +5,9 @@ using UnityEngine;
 
 public abstract class Card : MonoBehaviour
 {
-    private LineRenderer lr;
-    private Vector2 startPosition;
-    private Vector2 endPosition;
+    protected LineRenderer lr;
+    protected Vector2 startPosition;
+    protected Vector2 endPosition;
 
     public Material redMaterial;
     public Material greenMaterial;
@@ -31,25 +31,26 @@ public abstract class Card : MonoBehaviour
 
     void Update()
     {
-        DrawLine();
-    }
-
-    void DrawLine()
-    {
         if (lr.enabled)
         {
             HighlightEffect hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
             Vector3Int position = hf.GetHighlightPosition();
-            if (hf.IsValidTile(position))
-                lr.material = greenMaterial;
-            else
-                lr.material = redMaterial;
+            
+            SetMaterial(hf, position);
             
             startPosition = gameObject.transform.position;
             lr.SetPosition(0, startPosition);
             endPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             lr.SetPosition(1, endPosition);
         }
+    }
+    
+    protected virtual void SetMaterial(HighlightEffect hf, Vector3Int position)
+    {
+        if (hf.IsValidTile(position))
+            lr.material = greenMaterial;
+        else
+            lr.material = redMaterial;
     }
 
     //performs card action

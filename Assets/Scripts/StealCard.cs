@@ -16,4 +16,9 @@ public class StealCard : Card
         // transfers card to other player
         Debug.Log("stealTile");
     }
+
+    protected override void SetMaterial(HighlightEffect hf, Vector3Int position)
+    {
+        lr.material = redMaterial;
+    }
 }
