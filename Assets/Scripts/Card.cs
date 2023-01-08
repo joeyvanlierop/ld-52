@@ -34,9 +34,13 @@ public abstract class Card : MonoBehaviour
         if (lr.enabled)
         {
             HighlightEffect hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
+            CropManager cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
             Vector3Int position = hf.GetHighlightPosition();
-            
-            SetMaterial(hf, position);
+
+            if (IsValid(cm, position))
+                lr.material = greenMaterial;
+            else 
+                lr.material = redMaterial;
             
             startPosition = gameObject.transform.position;
             lr.SetPosition(0, startPosition);
@@ -45,12 +49,11 @@ public abstract class Card : MonoBehaviour
         }
     }
     
-    protected virtual void SetMaterial(HighlightEffect hf, Vector3Int position)
+    protected virtual bool IsValid(CropManager cm, Vector3Int position)
     {
-        if (hf.IsValidTile(position))
-            lr.material = greenMaterial;
-        else
-            lr.material = redMaterial;
+        if (cm.IsValidTile(position))
+            return true;
+        return false;
     }
 
     //performs card action
@@ -100,8 +103,9 @@ public abstract class Card : MonoBehaviour
     {
         lr.enabled = false;
         HighlightEffect hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
+        CropManager cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
         Vector3Int position = hf.GetHighlightPosition();
-        if (!hf.IsValidTile(position))
+        if (!IsValid(cm, position))
             return;
         ActionPerformed(position);
     }

@@ -17,8 +17,8 @@ public class StealCard : Card
         Debug.Log("stealTile");
     }
 
-    protected override void SetMaterial(HighlightEffect hf, Vector3Int position)
+    protected override bool IsValid(CropManager cm, Vector3Int position)
     {
-        lr.material = redMaterial;
+        return false;
     }
 }

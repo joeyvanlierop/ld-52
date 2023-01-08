@@ -1836,6 +1836,94 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: ownerTilemap
+      value: 
+      objectReference: {fileID: 449255185}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: ownerTiles.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: ownerTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e96137534525ce4f912d2902d715b87, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: ownerTiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9236d280c59276b42a9824fad78897d1, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: ownerTiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 568a35cafa20d434e84614b017b3ad96, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: ownerTiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8dcac93a380ce9046a82fb5064f872b2, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: groundTilemaps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: obstacleTilemaps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: groundTilemaps.Array.data[0]
+      value: 
+      objectReference: {fileID: 273981735}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 324351bfaa98ba74da7d4a996a7f81ec, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e529575f2a9f7a458694b6f555c77f2, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e0ea12f3315784c48a5dc1faa451a005, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d8377b934cc510408909561597d391c, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0915f786560c60542b87d295b122981d, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: b46d8c614a951fa4793eb2762b8a85fe, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: b8d4de7371d0b2446a40833e3ad56178, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 71f2561a9bdccd24a86ba2ab48479a40, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: eed7e356b34fd1b44909601470ac9544, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: blacklistedTiles.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d0520c7e4d2f984b9d68426519116ef, type: 2}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: obstacleTilemaps.Array.data[0]
+      value: 
+      objectReference: {fileID: 146320417}
+    - target: {fileID: 3564386543106003473, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: obstacleTilemaps.Array.data[1]
+      value: 
+      objectReference: {fileID: 1246190144}
     - target: {fileID: 3564386543106003475, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
       propertyPath: cornCrop
       value: 
@@ -1875,7 +1963,7 @@ GameObject:
   - component: {fileID: 449255184}
   m_Layer: 0
   m_Name: Owners
-  m_TagString: Highlight
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
