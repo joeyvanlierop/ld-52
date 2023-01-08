@@ -40,7 +40,7 @@ public class HarvestCard : Card
                 {
                     // calls onharvest to harvest plant
                     crop.OnHarvest();
-
+    
                     //adds points to player score
                     Debug.Log($"{crop.points}, {a}, x");
                 }

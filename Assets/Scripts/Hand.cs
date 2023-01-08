@@ -86,7 +86,6 @@ public class Hand : MonoBehaviour
     }
 
     public void AddCard(Card card) {
-        Debug.Log($"AGGG {card.name}");
         var c = Instantiate(card);
         c.transform.SetParent(this.transform);
         cards.Add(c);
