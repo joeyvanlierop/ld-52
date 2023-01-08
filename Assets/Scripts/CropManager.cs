@@ -110,4 +110,21 @@ public class CropManager : MonoBehaviour
 
         return false;
     }
+
+    public bool IsObstacle(Vector3Int position)
+    {
+        foreach (var tilemap in obstacleTilemaps)
+        {
+            if (tilemap.GetTile(position))
+                return true;
+        }
+
+        return false;
+    }
+    
+    public void RemoveObstacle(Vector3Int position)
+    {
+        foreach (var tilemap in obstacleTilemaps)
+            tilemap.SetTile(position, null);
+    }
 }
