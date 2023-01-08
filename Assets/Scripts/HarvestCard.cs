@@ -42,7 +42,7 @@ public class HarvestCard : Card
                     crop.OnHarvest();
 
                     //adds points to player score
-                    Debug.Log(crop.points);
+                    Debug.Log(crop.points,a,"x");
                 }
             }
 
@@ -57,7 +57,7 @@ public class HarvestCard : Card
                     crop.OnHarvest();
 
                     //adds points to player score
-                    Debug.Log(crop.points);
+                    Debug.Log(crop.points,a,"y");
                 }
             }
         }
