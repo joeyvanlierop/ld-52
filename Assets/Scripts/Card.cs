@@ -31,6 +31,11 @@ public abstract class Card : MonoBehaviour
 
     void Update()
     {
+        DrawLine();
+    }
+
+    void DrawLine()
+    {
         if (lr.enabled)
         {
             HighlightEffect hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
