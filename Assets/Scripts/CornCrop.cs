@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class CornCrop : Crop
 {
-    public void Start()
-    {
-        PlantType = "moist";
-    }
-    
     public override void OnTurn()
     {
         if (tilemap.tileAnchor.z > -1) return;

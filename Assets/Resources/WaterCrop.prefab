@@ -50,3 +50,4 @@ MonoBehaviour:
   tilemap: {fileID: 0}
   render: {fileID: 0}
   points: 3
+  PlantType: Water
