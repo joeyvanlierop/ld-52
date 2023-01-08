@@ -108,5 +108,6 @@ public abstract class Card : MonoBehaviour
         if (!IsValid(cm, position))
             return;
         ActionPerformed(position);
+        
     }
 }
