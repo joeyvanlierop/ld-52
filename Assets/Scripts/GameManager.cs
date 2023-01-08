@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     public float kDefaultTurnTimer = 50;
     public float transitionTime = 5;
     public int playerCount = 4;
+    public int actionPointsTurnRefresh = 3;
     public List<Player> players;
     public Canvas transitionScreen;
     public Canvas generalUi;
@@ -121,6 +122,7 @@ public class GameManager : MonoBehaviour, TimerObserver
         Debug.Log($"{players[currentPlayerIndex].playerName}'s points: {players[currentPlayerIndex].actionPoints}");
         highlightEffect.active = true;
         players[currentPlayerIndex].ShowHand();
+        players[currentPlayerIndex].actionPoints += actionPointsTurnRefresh;
     }
 
     public void DrawCard()
@@ -153,5 +155,11 @@ public class GameManager : MonoBehaviour, TimerObserver
     {
         players[owner].points += points;
         pointsTexts[owner].GetComponent<TextMeshPro>().text = $"{players[owner].playerName}: {players[owner].points}";
+    }
+
+
+
+    public void NotifyActionPointsChanged() {
+        Debug.Log($"{players[currentPlayerIndex].playerName}'s points: {players[currentPlayerIndex].actionPoints}");
     }
 }
