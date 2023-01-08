@@ -27,8 +27,6 @@ public class GameManager : MonoBehaviour, TimerObserver
     public CropManager cropManager;
     public HighlightEffect highlightEffect;
     
-
-
     public int currentPlayerIndex = 0;
     private string[] names = {"joe", "mama", "ben", "dover"};
     private bool inTransition = true;
