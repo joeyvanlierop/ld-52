@@ -128,7 +128,7 @@ MonoBehaviour:
   greenMaterial: {fileID: 2100000, guid: 74cccdcc5897e754d97287c94cd31388, type: 2}
   width: 0.25
   cost: 0
-  scaleChange: {x: 0, y: 0}
+  scaleChange: {x: 0.1, y: 0.1}
   mouseOver: 0
   originalPOS: {x: 0, y: 0, z: 0}
   originalSort: 0

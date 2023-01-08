@@ -20,10 +20,7 @@ public class FertilizerCard : Card
     
     protected override bool IsValid(CropManager cm, Vector3Int position)
     {
-        if (!cm.IsValidTile(position))
-            return false;
-
-        if (cm.GetCrop(position, out var crop) && crop.fullGrown)
+        if (!cm.GetCrop(position, out var crop) || crop.fullGrown)
             return false;
 
         GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
