@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class CropManager : MonoBehaviour
 {
+    public 
+    
     public void OnTurn()
     {
         var cropObjects = GameObject.FindGameObjectsWithTag("Crop");
@@ -10,5 +13,10 @@ public class CropManager : MonoBehaviour
             var crop = cropObject.GetComponent<Crop>();
             crop.OnTurn();
         }
+    }
+
+    public bool HasCrop(Vector3Int position)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -18,4 +18,6 @@ public abstract class Crop : MonoBehaviour
     }
 
     public abstract void OnTurn();
+    
+    public abstract void OnHarvest();
 }
