@@ -45,7 +45,7 @@ public class HighlightEffect : MonoBehaviour
         var position = GetHighlightPosition();
         if (!IsValidTile(position))
             return;
-        Instantiate(cornCrop, position, Quaternion.identity);
+        GetComponent<CropManager>().AddCrop(position, cornCrop);
     }
 
     void Update()
@@ -88,10 +88,5 @@ public class HighlightEffect : MonoBehaviour
         }
         
         return true;
-    }
-
-    void PlaceTile()
-    {
-        
     }
 }

@@ -16,6 +16,4 @@ public class CornCard : Card
     {
         Instantiate(cornCrop, position, Quaternion.identity);
     }
-
-  
 }

@@ -88,7 +88,6 @@ public abstract class Card : MonoBehaviour
     void OnMouseDown()
     {
         lr.enabled = true;
-        Debug.Log("POOP");
     }
     
     void OnMouseUp()

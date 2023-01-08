@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CropManager : MonoBehaviour
 {
-    public 
+    private Dictionary<Vector3Int, Crop> crops;
     
     public void OnTurn()
     {
@@ -15,8 +17,22 @@ public class CropManager : MonoBehaviour
         }
     }
 
-    public bool HasCrop(Vector3Int position)
+    public void AddCrop(Vector3Int position, GameObject cropObject)
     {
-        throw new NotImplementedException();
+        Instantiate(cropObject, position, Quaternion.identity);
+        crops.Add(position, cropObject.GetComponent<Crop>());
+    }
+
+    public void RemoveCrop(Vector3Int position)
+    {
+        if (!crops.TryGetValue(position, out var crop))
+            return;
+        Destroy(crop);
+        crops.Remove(position);
+    }
+
+    public bool GetCrop(Vector3Int key, out Crop crop)
+    {
+        return crops.TryGetValue(key, out crop);
     }
 }
