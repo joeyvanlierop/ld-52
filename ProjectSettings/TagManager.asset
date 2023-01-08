@@ -10,6 +10,11 @@ TagManager:
   - Grid
   - CropManager
   - GameManager
+  - PlayerFeild
+  - ScrollView
+  - Content
+  - Names
+  - MainMenu
   layers:
   - Default
   - TransparentFX

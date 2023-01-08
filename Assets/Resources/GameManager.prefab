@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -3687370628460653264}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,10 +50,10 @@ MonoBehaviour:
   turnTimerPrefab: {fileID: -1922170488210695991, guid: 45f37cbc02d70494fbd3dbd35972c3b6, type: 3}
   deckPrefab: {fileID: 2331304140627111647, guid: 251ad5a9a9c40b045befca86fd2d434f, type: 3}
   pointsTextPrefab: {fileID: 6932048295986975009, guid: 0a9cb4a51ef33f647a9c78f57576fb55, type: 3}
-  actionPointsTextPrefab: {fileID: 4142607218525913747, guid: d2f997d556aa9de4a95dd662defc2356, type: 3}
   kDefaultTurnTimer: 50
   transitionTime: 5
   playerCount: 4
+  actionPointsTurnRefresh: 3
   players: []
   transitionScreen: {fileID: 0}
   generalUi: {fileID: 0}
@@ -62,4 +62,5 @@ MonoBehaviour:
   cropManager: {fileID: 0}
   highlightEffect: {fileID: 0}
   actionPointsText: {fileID: 0}
+  names: []
   currentPlayerIndex: 0

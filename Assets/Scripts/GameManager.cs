@@ -26,23 +26,38 @@ public class GameManager : MonoBehaviour, TimerObserver
     public CropManager cropManager;
     public HighlightEffect highlightEffect;
     public TextMeshPro actionPointsText;
+    public List<string> names;
 
     public int currentPlayerIndex;
     private bool inTransition = true;
-    private readonly string[] names = { "joe", "mama", "ben", "dover" };
+    private readonly string[] default_names = { "joe", "mama", "ben", "dover" };
     private readonly List<GameObject> pointsTexts = new();
 
 
     // Start is called before the first frame update
     private void Start()
     {
+
+    }
+
+
+    public void StartGame(List<string> names_) {
         // Instantiate
-        for (var i = 0; i < playerCount; i++)
-        {
-            var player = Instantiate(playerPrefab);
-            player.playerName = names[i];
-            players.Add(player);
+        if (names_.Count == 0) {
+            for (var i = 0; i < playerCount; i++)
+            {
+                var player = Instantiate(playerPrefab);
+                player.playerName = default_names[i];
+                players.Add(player);
+            }
+        } else {
+            foreach (string name in names_) {
+                var player = Instantiate(playerPrefab);
+                player.playerName = name;
+                players.Add(player);
+            }
         }
+
 
         // Randomize
         for (var i = 0; i < players.Count; i++)
