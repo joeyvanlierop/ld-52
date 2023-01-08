@@ -17,17 +17,6 @@ public class Deck : MonoBehaviour
     public int cardCount;
     public List<Card> cardPrefabList;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
-
     public void PopulateDeck()
     {
         var e = from weightCardPrefab in weightCardPrefabs select weightCardPrefab.weight;

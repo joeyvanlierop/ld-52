@@ -9,12 +9,6 @@ public class Hand : MonoBehaviour
     public float cardWidth = 3;
     public Animator movement;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        // Layout();
-    }
-
     // Update is called once per frame
     private void Update()
     {

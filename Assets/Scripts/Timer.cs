@@ -8,12 +8,6 @@ public class Timer : MonoBehaviour
 
     public List<TimerObserver> observers = new();
 
-    // public Text text;
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
-
     // Update is called once per frame
     private void Update()
     {

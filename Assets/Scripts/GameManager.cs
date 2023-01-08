@@ -89,13 +89,6 @@ public class GameManager : MonoBehaviour, TimerObserver
         StartTransition(true);
     }
 
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
-
     public void OnTimerEnd()
     {
         Transition();

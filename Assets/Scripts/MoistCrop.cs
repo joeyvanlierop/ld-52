@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class MoistCrop : Crop
 {
-    public void Start()
-    {
-    }
-
     public override void OnTurn()
     {
         if (tilemap.tileAnchor.z > -1) return;
