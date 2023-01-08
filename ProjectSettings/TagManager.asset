@@ -9,6 +9,7 @@ TagManager:
   - Highlight
   - Grid
   - CropManager
+  - GameManager
   layers:
   - Default
   - TransparentFX

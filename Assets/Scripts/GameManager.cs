@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     
 
 
-    private int currentPlayerIndex = 0;
+    public int currentPlayerIndex = 0;
     private string[] names = {"joe", "mama", "ben", "dover"};
     private bool inTransition = true;
 

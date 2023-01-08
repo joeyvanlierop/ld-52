@@ -4,7 +4,11 @@ using UnityEngine.Tilemaps;
 
 public class CropManager : MonoBehaviour
 {
-    private Dictionary<Vector3Int, Crop> crops = new Dictionary<Vector3Int, Crop>();
+    public Tile[] ownerTiles;
+    public Tilemap ownerTilemap;
+        
+    private Dictionary<Vector3Int, Crop> crops = new();
+    private Dictionary<Vector3Int, int> owners = new();
     
     public void OnTurn()
     {   
@@ -15,6 +19,13 @@ public class CropManager : MonoBehaviour
         {
             crop.OnTurn();
         }
+    }
+    
+    public void SetOwner(Vector3Int position, int playerIndex)
+    {
+        Debug.Log("DEBUG");
+        owners.Add(position, playerIndex);
+        ownerTilemap.SetTile(position, ownerTiles[playerIndex]);
     }
 
     public void AddCrop(Vector3Int position, GameObject cropObject)
@@ -27,6 +38,9 @@ public class CropManager : MonoBehaviour
         crop.tilemap = cropsTilesetObject.GetComponent<Tilemap>();
         crop.render = cropsTilesetObject.GetComponent<TilemapRenderer>();
         crops.Add(position, cropObj.GetComponent<Crop>());
+
+        GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        SetOwner(position, gm.currentPlayerIndex);
     }
 
     public void RemoveCrop(Vector3Int position)
