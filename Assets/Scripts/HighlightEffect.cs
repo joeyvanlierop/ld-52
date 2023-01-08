@@ -1,11 +1,10 @@
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class HighlightEffect : MonoBehaviour
 {
-  Tilemap highlightTileMap;
-  CropManager cropManager;
+    private CropManager cropManager;
+    private Tilemap highlightTileMap;
 
   public bool active = true;
   public Card draggedCard = null;
@@ -14,23 +13,24 @@ public class HighlightEffect : MonoBehaviour
   public Vector3Int offset = Vector3Int.zero;
   public bool isValidTile = false;
   public bool hovering = false;
+    private void Start()
+    {
+        highlightTileMap = GameObject.FindGameObjectWithTag("Highlight").GetComponent<Tilemap>();
+        cropManager = GetComponent<CropManager>();
+    }
 
-  void Start()
-  {
-    highlightTileMap = GameObject.FindGameObjectWithTag("Highlight").GetComponent<Tilemap>();
-    cropManager = GetComponent<CropManager>();
-  }
+    private void Update()
+    {
+        if (!active)
+            return;
 
-  void Update()
-  {
-    if (!active)
-      return;
+        highlightTileMap.ClearAllTiles();
 
 
 
     highlightTileMap.ClearAllTiles();
-
     var highlightPosition = GetHighlightPosition();
+    
 
     if (isValidTile)
       highlightTileMap.SetTile(highlightPosition, highlightTile);

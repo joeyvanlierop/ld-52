@@ -45,3 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards: []
+  spacing: 2
+  yOffset: 1
+  cardWidth: 3
+  movement: {fileID: 0}

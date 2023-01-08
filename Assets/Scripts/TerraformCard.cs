@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StealCard : Card
+public class TerraformCard : Card
 {
     private new void Start()
     {
@@ -10,16 +10,13 @@ public class StealCard : Card
     public override void ActionPerformed(Vector3Int position)
     {
         var cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
+        cm.RemoveObstacle(position);
         var gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         cm.SetOwner(position, gm.currentPlayerIndex);
     }
 
-    public override bool IsValid(CropManager cm, Vector3Int position)
+    protected override bool IsValid(CropManager cm, Vector3Int position)
     {
-        var gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        if (cm.GetOwner(position, out var owner) && owner != gm.currentPlayerIndex)
-            return true;
-
-        return false;
+        return cm.IsObstacle(position);
     }
 }

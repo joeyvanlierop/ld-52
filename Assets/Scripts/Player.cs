@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -17,42 +15,39 @@ public class Player : MonoBehaviour
     public float points;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         hand = Instantiate(handPrefab);
-        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 
 
-    public void HideHand() {
+    public void HideHand()
+    {
         hand.Hide();
     }
 
-    public void ShowHand() {
+    public void ShowHand()
+    {
         hand.Show();
     }
 
 
-
-    public bool PlayCard(Card card) {
+    public bool PlayCard(Card card)
+    {
         var new_points = actionPoints - card.actionPoints;
-        if (new_points < 0) {
-            return false;
-        }
+        if (new_points < 0) return false;
         actionPoints = new_points;
         return true;
     }
 
 
-
-
-    public void DrawCard(Card card) {
+    public void DrawCard(Card card)
+    {
         hand.AddCard(card, this);
     }
 }

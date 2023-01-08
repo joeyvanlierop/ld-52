@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,10 +8,7 @@ public class CropEditor : Editor
     {
         DrawDefaultInspector();
 
-        CropManager cropManager = (CropManager)target;
-        if (GUILayout.Button("Execute Turn"))
-        {
-            cropManager.OnTurn();
-        }
+        var cropManager = (CropManager)target;
+        if (GUILayout.Button("Execute Turn")) cropManager.OnTurn();
     }
 }

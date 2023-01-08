@@ -57,5 +57,7 @@ MonoBehaviour:
     prefab: {fileID: 6482776801946138769, guid: 215371178775c2d4b8e12f61cbe4f368, type: 3}
   - weight: 50
     prefab: {fileID: 2014640494431286828, guid: ab01ad76a12f3724691de5a49c14208b, type: 3}
+  - weight: 25
+    prefab: {fileID: -9107547786055011224, guid: c82a65a1d85d44042899ef833c318f9a, type: 3}
   cardCount: 52
   cardPrefabList: []
