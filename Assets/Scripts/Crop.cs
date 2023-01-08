@@ -14,6 +14,10 @@ public abstract class Crop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    public void Spawn() {
         tilemap.tileAnchor = new Vector3(0.5f, 0.5f, -1.9f);
         var position = Vector3Int.FloorToInt(transform.position);
         tilemap.SetTile(position, tile);

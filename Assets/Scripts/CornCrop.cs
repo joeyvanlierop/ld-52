@@ -24,7 +24,7 @@ public class CornCrop : Crop
     public override void OnHarvest()
     {   
         //destroys crop
-        DestroyObject(gameObject);
+        Destroy(gameObject);
 
     }
 }

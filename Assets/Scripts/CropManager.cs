@@ -36,12 +36,13 @@ public class CropManager : MonoBehaviour
     {
         var cropObj = Instantiate(cropObject, position, Quaternion.identity);
         var crop = cropObj.GetComponent<Crop>();
-        var cropsTilesetObject = GameObject.FindGameObjectWithTag("Crops");
+        var cropsTilesetObject = Instantiate(GameObject.FindGameObjectWithTag("Crops"));
         cropsTilesetObject.transform.SetParent(GameObject.FindGameObjectWithTag("Grid").transform);
         cropsTilesetObject.transform.localPosition = new Vector3(0,0,0);
         crop.tilemap = cropsTilesetObject.GetComponent<Tilemap>();
         crop.render = cropsTilesetObject.GetComponent<TilemapRenderer>();
-        crops.Add(position, cropObj.GetComponent<Crop>());
+        crop.Spawn();
+        crops.Add(position, crop);
 
         GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         SetOwner(position, gm.currentPlayerIndex);
