@@ -8,6 +8,7 @@ public abstract class Card : MonoBehaviour
     protected LineRenderer lr;
     protected Vector2 startPosition;
     protected Vector2 endPosition;
+    protected Player player;
 
     public Material redMaterial;
     public Material greenMaterial;
@@ -19,6 +20,9 @@ public abstract class Card : MonoBehaviour
     public Vector3 originalPOS; //original card position
     public int originalSort; //original card sorting order
     public Vector3 hoverMovement; // how much card moves when card hovered over
+    public int actionPoints;
+
+
 
     protected void Start()
     {
@@ -99,10 +103,19 @@ public abstract class Card : MonoBehaviour
         
         if (!IsValid(cm, position))
             return;
-        ActionPerformed(position);
-        Instantiate(Resources.Load("RipCard"), transform.position, transform.rotation);
-        
-        GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        gm.players[gm.currentPlayerIndex].hand.RemoveCard(this);
+        // Only play the card if the player is able to
+        if (player.PlayCard(this)) {
+            ActionPerformed(position);
+            Instantiate(Resources.Load("RipCard"), transform.position, transform.rotation);
+            
+            GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            gm.players[gm.currentPlayerIndex].hand.RemoveCard(this);
+        }
+    }
+
+
+
+    public void RegisterPlayer(Player player_) {
+        player = player_;
     }
 }

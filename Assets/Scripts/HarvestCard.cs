@@ -22,9 +22,6 @@ public class HarvestCard : Card
             // calls onharvest to harvest plant
             crop.OnHarvest();
 
-            //adds points to player score
-            Debug.Log(crop.points);
-
             //list for adjacent tile iteration
             List<int> adj = new List<int>
             {
@@ -40,9 +37,6 @@ public class HarvestCard : Card
                 {
                     // calls onharvest to harvest plant
                     crop.OnHarvest();
-    
-                    //adds points to player score
-                    Debug.Log($"{crop.points}, {a}, x");
                 }
             }
 
@@ -55,9 +49,6 @@ public class HarvestCard : Card
                 {
                     // calls onharvest to harvest plant
                     crop.OnHarvest();
-
-                    //adds points to player score
-                    Debug.Log($"{crop.points}, {a}, y");
                 }
             }
         }

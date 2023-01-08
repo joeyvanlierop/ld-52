@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public Hand handPrefab;
 
-    public float ActionPoints = 0;
+    public float actionPoints;
 
     public float turnTime;
 
@@ -40,8 +40,19 @@ public class Player : MonoBehaviour
 
 
 
+    public bool PlayCard(Card card) {
+        var new_points = actionPoints - card.actionPoints;
+        if (new_points < 0) {
+            return false;
+        }
+        actionPoints = new_points;
+        return true;
+    }
+
+
+
 
     public void DrawCard(Card card) {
-        hand.AddCard(card);
+        hand.AddCard(card, this);
     }
 }

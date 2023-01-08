@@ -5,7 +5,7 @@ public class CornCrop : Crop
 {
     public void Start()
     {
-        points = 5;
+        // points = 5;
     }
     public override void OnTurn()
     {
