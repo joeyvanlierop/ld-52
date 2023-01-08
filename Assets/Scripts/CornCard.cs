@@ -14,6 +14,7 @@ public class CornCard : Card
 
     public override void ActionPerformed(Vector3Int position)
     {
-        Instantiate(cornCrop, position, Quaternion.identity);
+        CropManager cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
+        cm.AddCrop(position, cornCrop);
     }
 }
