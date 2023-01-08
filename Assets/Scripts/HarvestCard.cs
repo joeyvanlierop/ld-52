@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class HarvestCard : Card
 {
-  
-    
     new void Start()
     {
         base.Start();
@@ -28,14 +26,15 @@ public class HarvestCard : Card
             Debug.Log(crop.points);
 
             //list for adjacent tile iteration
-            List<int> adj = new List<int>{
-                -1,1
+            List<int> adj = new List<int>
+            {
+                -1, 1
             };
 
             //iterating for adjacents on x axis
             foreach (int a in adj)
-            {   
-                position = new Vector3Int(position.x+a,position.y);
+            {
+                position = new Vector3Int(position.x + a, position.y);
                 //cheching if a crop is on tile
                 if (cm.GetCrop(position, out crop))
                 {
@@ -49,8 +48,8 @@ public class HarvestCard : Card
 
             //iterating for adjacents on y axis
             foreach (int a in adj)
-            {   
-                position = new Vector3Int(position.x,position.y+a);
+            {
+                position = new Vector3Int(position.x, position.y + a);
                 //cheching if a crop is on tile
                 if (cm.GetCrop(position, out crop))
                 {
@@ -64,6 +63,15 @@ public class HarvestCard : Card
         }
     }
 
+    protected override bool IsValid(CropManager cm, Vector3Int position)
+    {
+        if (!cm.GetCrop(position, out var crop) || !crop.fullGrown)
+            return false;
+        
+        GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        if (cm.GetOwner(position, out var owner) && owner != gm.currentPlayerIndex)
+            return false;
 
-  
+        return true;
+    }
 }

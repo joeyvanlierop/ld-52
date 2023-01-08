@@ -17,8 +17,8 @@ public class CornCrop : Crop
         if (tilemap.tileAnchor.z > -1) {
             tilemap.tileAnchor = new Vector3(0.5f, 0.5f, 0);
             render.sortingOrder = 1;
+            fullGrown = true;
         }
-        Debug.Log("I am a corn crop");
     }
 
     public override void OnHarvest()
