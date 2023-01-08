@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,10 +8,8 @@ public class CropManager : MonoBehaviour
     
     public void OnTurn()
     {
-        var cropObjects = GameObject.FindGameObjectsWithTag("Crop");
-        foreach(GameObject cropObject in cropObjects)
+        foreach(Crop crop in crops.Values)
         {
-            var crop = cropObject.GetComponent<Crop>();
             crop.OnTurn();
         }
     }
