@@ -1783,7 +1783,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &379074525
 PrefabInstance:
@@ -1794,7 +1794,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3564386543106003472, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3564386543106003472, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1854,6 +1854,10 @@ PrefabInstance:
       objectReference: {fileID: 146320417}
     - target: {fileID: 3564386543106003478, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
       propertyPath: m_Name
+      value: CropManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564386543106003478, guid: 9ccaa40e6db71c1418512f6e1bee69e8, type: 3}
+      propertyPath: m_TagString
       value: CropManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
