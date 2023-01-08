@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -6,6 +7,9 @@ public class CropManager : MonoBehaviour
 {
     public Tile[] ownerTiles;
     public Tilemap ownerTilemap;
+    public Tilemap[] groundTilemaps;
+    public Tilemap[] obstacleTilemaps;
+    public Tile[] blacklistedTiles;
         
     private Dictionary<Vector3Int, Crop> crops = new();
     private Dictionary<Vector3Int, int> owners = new();
@@ -23,7 +27,7 @@ public class CropManager : MonoBehaviour
     
     public void SetOwner(Vector3Int position, int playerIndex)
     {
-        Debug.Log("DEBUG");
+        Debug.Log(playerIndex);
         owners.Add(position, playerIndex);
         ownerTilemap.SetTile(position, ownerTiles[playerIndex]);
     }
@@ -54,5 +58,29 @@ public class CropManager : MonoBehaviour
     public bool GetCrop(Vector3Int key, out Crop crop)
     {
         return crops.TryGetValue(key, out crop);
+    }
+    
+    public bool GetOwner(Vector3Int key, out int owner)
+    {
+        return owners.TryGetValue(key, out owner);
+    }
+    
+    public bool IsValidTile(Vector3Int position)
+    {
+        foreach (var tilemap in groundTilemaps)
+        {
+            if (!tilemap.GetTile(position))
+                return false;
+            if (blacklistedTiles.Contains(tilemap.GetTile(position)))
+                return false;
+        }
+
+        foreach (var tilemap in obstacleTilemaps)
+        {
+            if (tilemap.GetTile(position))
+                return false;
+        }
+
+        return true;
     }
 }

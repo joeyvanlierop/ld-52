@@ -5,19 +5,17 @@ using UnityEngine.Tilemaps;
 public class HighlightEffect : MonoBehaviour
 {
   Tilemap highlightTileMap;
+  CropManager cropManager;
 
   public bool active = true;
   public Tile highlightTile;
   public Tile blacklistTile;
   public Vector3Int offset = Vector3Int.zero;
-  public Tilemap[] groundTilemaps;
-  public Tilemap[] obstacleTilemaps;
-  public Tile[] blacklistedTiles;
-  public GameObject cornCrop;
 
   void Start()
   {
     highlightTileMap = GameObject.FindGameObjectWithTag("Highlight").GetComponent<Tilemap>();
+    cropManager = GetComponent<CropManager>();
   }
 
   void Update()
@@ -29,7 +27,7 @@ public class HighlightEffect : MonoBehaviour
 
     var highlightPosition = GetHighlightPosition();
 
-    if (IsValidTile(highlightPosition))
+    if (cropManager.IsValidTile(highlightPosition))
       highlightTileMap.SetTile(highlightPosition, highlightTile);
     else
       highlightTileMap.SetTile(highlightPosition, blacklistTile);
@@ -41,24 +39,5 @@ public class HighlightEffect : MonoBehaviour
     Vector3Int highlightPosition = highlightTileMap.WorldToCell(mousePosition);
     highlightPosition += offset;
     return highlightPosition;
-  }
-
-  public bool IsValidTile(Vector3Int position)
-  {
-    foreach (var tilemap in groundTilemaps)
-    {
-      if (!tilemap.GetTile(position))
-        return false;
-      if (blacklistedTiles.Contains(tilemap.GetTile(position)))
-        return false;
-    }
-
-    foreach (var tilemap in obstacleTilemaps)
-    {
-      if (tilemap.GetTile(position))
-        return false;
-    }
-
-    return true;
   }
 }
