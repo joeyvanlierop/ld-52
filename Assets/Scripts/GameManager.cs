@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     public Canvas generalUiPrefab;
     public Timer turnTimerPrefab;
     public Deck deckPrefab;
+    public GameObject pointsTextPrefab;
     
     // Members
     public float kDefaultTurnTimer = 50;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     public int currentPlayerIndex = 0;
     private string[] names = {"joe", "mama", "ben", "dover"};
     private bool inTransition = true;
+    private List<GameObject> pointsTexts = new List<GameObject>();
 
 
     // Start is called before the first frame update
@@ -71,6 +73,18 @@ public class GameManager : MonoBehaviour, TimerObserver
 
         cropManager = FindObjectOfType<CropManager>();
         highlightEffect = FindObjectOfType<HighlightEffect>();
+
+        // Add points UI elements
+        for (int i = 0; i < players.Count; i++) {
+            var player = players[i];
+            var pointsText = Instantiate(pointsTextPrefab, new Vector3(0,-i,0), Quaternion.identity);
+            var rect = pointsText.GetComponent<RectTransform>();
+            var text = pointsText.GetComponent<TMPro.TextMeshPro>();
+            pointsText.transform.SetParent(generalUi.transform);
+            text.text = $"{player.playerName}: 0";
+            pointsText.name = player.playerName;
+            pointsTexts.Add(pointsText);
+        }
 
 
         StartTransition(true);
@@ -135,5 +149,11 @@ public class GameManager : MonoBehaviour, TimerObserver
             EndTransition();
         }
         inTransition = !inTransition;
+    }
+
+
+    public void NotifyHarvest(float points, int owner) {
+        players[owner].points += points;
+        pointsTexts[owner].GetComponent<TMPro.TextMeshPro>().text = $"{players[owner].playerName}: {players[owner].points}";
     }
 }
