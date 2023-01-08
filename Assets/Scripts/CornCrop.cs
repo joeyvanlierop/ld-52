@@ -3,6 +3,10 @@ using UnityEngine.Tilemaps;
 
 public class CornCrop : Crop
 {
+    public void Start()
+    {
+        points = 5;
+    }
     public override void OnTurn()
     {
         if (tilemap.tileAnchor.z > -1) {
@@ -18,7 +22,9 @@ public class CornCrop : Crop
     }
 
     public override void OnHarvest()
-    {
-        Debug.Log("Harvest");
+    {   
+        //destroys crop
+        DestroyObject(gameObject);
+
     }
 }
