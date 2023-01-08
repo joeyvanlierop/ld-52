@@ -67,6 +67,10 @@ public class Hand : MonoBehaviour
         foreach (var renderer in renderers) {
             renderer.enabled = true;
         }
+        var colliders = this.GetComponentsInChildren<BoxCollider2D>();
+        foreach (var collider in colliders) {
+            collider.enabled = true;
+        }
     }
 
     public void Hide() 
@@ -74,6 +78,10 @@ public class Hand : MonoBehaviour
         var renderers = this.GetComponentsInChildren<SpriteRenderer>();
         foreach (var renderer in renderers) {
             renderer.enabled = false;
+        }
+        var colliders = this.GetComponentsInChildren<BoxCollider2D>();
+        foreach (var collider in colliders) {
+            collider.enabled = false;
         }
     }
 
