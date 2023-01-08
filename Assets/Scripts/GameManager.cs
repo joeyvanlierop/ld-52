@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour, TimerObserver
 
     void StartTransition(bool first = false) {
         generalUi.enabled = false;
-        highlightEffect.enabled = false;
+        highlightEffect.active = false;
         transitionScreen.enabled = true;
         timer.StartTimer(transitionTime);
         transitionScreen.GetComponent<Image>().color = new Color(0,0,0,255);
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour, TimerObserver
         transitionScreen.GetComponent<Image>().color = new Color(0,0,0,0);
         timer.StartTimer(kDefaultTurnTimer);
         transitionScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
-        highlightEffect.enabled = true;
+        highlightEffect.active = true;
         players[currentPlayerIndex].ShowHand();
     }
 
