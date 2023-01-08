@@ -9,7 +9,7 @@ public class HighlightEffect : MonoBehaviour
 {
   Tilemap highlightTileMap;
 
-  public bool enabled = true;
+  public bool active = true;
   public Tile highlightTile;
   public Tile blacklistTile;
   public Vector3Int offset = Vector3Int.zero;
@@ -25,7 +25,7 @@ public class HighlightEffect : MonoBehaviour
 
   void Update()
   {
-    if (!enabled)
+    if (!active)
       return;
 
     highlightTileMap.ClearAllTiles();
