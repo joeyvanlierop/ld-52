@@ -17,6 +17,7 @@ public abstract class Card : MonoBehaviour
     protected LineRenderer lr;
     protected Player player;
     protected Vector2 startPosition;
+    protected bool lockPopup = false;
 
 
     protected void Start()
@@ -55,20 +56,12 @@ public abstract class Card : MonoBehaviour
     }
     
     public abstract bool IsValid(CropManager cm, Vector3Int position);
-    // {
-    //     if (cm.IsValidTile(position))
-    //         return true;
-    //     return false;
-    // }
-
-    private void OnMouseDown()
-    {
-        lr.enabled = true;
-    }
-
 
     public void OnMouseEnter()
     {
+        if (lockPopup)
+            return;
+        
         //getting original position and sorting order of card
         originalPOS = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         originalSort = GetComponent<SpriteRenderer>().sortingOrder;
@@ -86,6 +79,9 @@ public abstract class Card : MonoBehaviour
 
     public void OnMouseExit()
     {
+        if (lockPopup)
+            return;
+        
         // makes card smaller when mouse leaves it
         transform.localScale =
             new Vector2(transform.localScale.x - scaleChange.x, transform.localScale.y - scaleChange.y);
@@ -95,8 +91,23 @@ public abstract class Card : MonoBehaviour
         GetComponent<SpriteRenderer>().sortingOrder = originalSort;
     }
 
+    private void OnMouseDown()
+    {
+        lr.enabled = true;
+        lockPopup = true;
+    }
+    
     private void OnMouseUp()
     {
+        if (lockPopup)
+        {
+            transform.localScale =
+                new Vector2(transform.localScale.x - scaleChange.x, transform.localScale.y - scaleChange.y);
+            transform.position = originalPOS;
+            GetComponent<SpriteRenderer>().sortingOrder = originalSort;
+            lockPopup = false;
+        }
+        
         lr.enabled = false;
         var hf = GameObject.FindGameObjectWithTag("CropManager").GetComponent<HighlightEffect>();
         var cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
