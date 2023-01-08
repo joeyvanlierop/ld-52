@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stealTile : Card
+public class StealCard : Card
 {
     
     new void Start()
@@ -16,6 +16,4 @@ public class stealTile : Card
         // transfers card to other player
         Debug.Log("stealTile");
     }
-
-  
 }
