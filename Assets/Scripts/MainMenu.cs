@@ -55,20 +55,22 @@ public class MainMenu : MonoBehaviour
         foreach (var nameObj in namesObj) {
             names.Add(nameObj.GetComponentInChildren<TMPro.TMP_InputField>().text);
         }
+        startGameButton.interactable = !CheckForMatchingNames(names);
+    }
+
+
+    bool CheckForMatchingNames(List<string> names) {
         bool found = false;
         for (int i = 0; i < names.Count; i++) {
             List<string> newList = new List<string>(names);
             newList.RemoveAt(i);
             if (newList.Contains(names[i])) {
                 found = true;
+                break;
             }
         }
 
-        if (found) {
-            startGameButton.interactable = false;
-        } else {
-            startGameButton.interactable = true;
-        }
+        return found;
     }
 
 
@@ -98,6 +100,8 @@ public class MainMenu : MonoBehaviour
         new_feild.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
 
         new_feild.GetComponentInChildren<TMPro.TMP_InputField>().text = $"Player {players}";
+
+        namesObj.Add(new_feild);
     }
 
     void RemovePlayer() {
@@ -108,6 +112,7 @@ public class MainMenu : MonoBehaviour
         }
         players--;
         var lastPayerFeild = playerFeilds[playerFeilds.Length - 1];
+        namesObj.RemoveAt(playerFeilds.Length - 1);
         Destroy(lastPayerFeild);
     }
 }

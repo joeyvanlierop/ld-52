@@ -1821,13 +1821,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3590574184112930267, guid: 66bcb23c109eb3040a912228dd807e81, type: 3}
       propertyPath: m_Text
-      value: 'Player 2
-
-'
+      value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 4868687839314021915, guid: 66bcb23c109eb3040a912228dd807e81, type: 3}
       propertyPath: m_text
-      value: "Player 2\n\u200B"
+      value: "Player 2\u200B"
       objectReference: {fileID: 0}
     - target: {fileID: 7170468881383503071, guid: 66bcb23c109eb3040a912228dd807e81, type: 3}
       propertyPath: m_Name
