@@ -49,4 +49,4 @@ MonoBehaviour:
   growRate: 0.1
   tilemap: {fileID: 0}
   render: {fileID: 0}
-  points: 0
+  points: 3

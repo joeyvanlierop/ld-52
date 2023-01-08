@@ -15,6 +15,7 @@ public class HarvestCard : Card
 
         //cheching if a crop is on tile
         Crop crop;
+        Crop CropAdj;
         if (cm.GetCrop(position, out crop))
         {
             // calls onharvest to harvest plant
@@ -31,9 +32,12 @@ public class HarvestCard : Card
             {
                 var newPosition = new Vector3Int(position.x + a, position.y);
                 //cheching if a crop is on tile
-                if (cm.GetCrop(newPosition, out crop))
-                    // calls onharvest to harvest plant
-                    crop.OnHarvest();
+                if (cm.GetCrop(newPosition, out CropAdj))
+                    // calls onharvest to harvest plant if adjacent plant is same plant type
+                    if (CropAdj.PlantType == crop.PlantType)
+                    {
+                        CropAdj.OnHarvest();
+                    }
             }
 
             //iterating for adjacents on y axis
@@ -41,9 +45,13 @@ public class HarvestCard : Card
             {
                 var newPosition = new Vector3Int(position.x, position.y + a);
                 //cheching if a crop is on tile
-                if (cm.GetCrop(newPosition, out crop))
-                    // calls onharvest to harvest plant
-                    crop.OnHarvest();
+                if (cm.GetCrop(newPosition, out CropAdj))
+                    // calls onharvest to harvest plant if adjacent plant is same plant type
+                    if (CropAdj.PlantType == crop.PlantType)
+                    {
+                        CropAdj.OnHarvest();
+                    }
+                    
             }
         }
     }

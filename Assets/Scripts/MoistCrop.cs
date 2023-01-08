@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class MoistCrop : Crop
 {
+    public void Start()
+    {
+        PlantType = "moist";
+    }
+    
     public override void OnTurn()
     {
         if (tilemap.tileAnchor.z > -1) return;
@@ -11,12 +16,13 @@ public class MoistCrop : Crop
         {
             tilemap.tileAnchor = new Vector3(0.5f, 0.5f, 0);
             render.sortingOrder = 1;
+            fullGrown = true;
         }
     }
 
     public override void OnHarvest()
     {
-        //destroys crop
-        Destroy(gameObject);
+        var cm = GameObject.FindGameObjectWithTag("CropManager").GetComponent<CropManager>();
+        cm.HarvestCrop(GetPosition());
     }
 }
