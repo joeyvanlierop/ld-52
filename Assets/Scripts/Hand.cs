@@ -16,7 +16,7 @@ public class Hand : MonoBehaviour
         if (Input.GetKey(KeyCode.R)) bringHandFromNarnia();
     }
 
-    private void Layout()
+    public void Layout()
     {
         var stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
 

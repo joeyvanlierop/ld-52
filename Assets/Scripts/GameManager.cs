@@ -167,6 +167,7 @@ public class GameManager : MonoBehaviour, TimerObserver
         players[currentPlayerIndex].ShowHand();
         players[currentPlayerIndex].actionPoints += actionPointsTurnRefresh;
         NotifyActionPointsChanged();
+        players[currentPlayerIndex].hand.Layout();
     }
 
     public void DrawCard()
