@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: bec8b9e3320074e429c50bd6d8241921, type: 2}
   fullGrown: 0
-  growRate: 0.1
+  growRate: 0.2
   tilemap: {fileID: 0}
   render: {fileID: 0}
   points: 3
