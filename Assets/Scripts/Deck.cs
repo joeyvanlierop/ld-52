@@ -14,11 +14,13 @@ public class WeightCardPrefab
 public class Deck : MonoBehaviour
 {
     public List<WeightCardPrefab> weightCardPrefabs;
+    public int defaultCardCount = 20;
     public int cardCount;
     public List<Card> cardPrefabList;
 
-    public void PopulateDeck()
+    public void PopulateDeck(int players)
     {
+        cardCount = defaultCardCount * players;
         var e = from weightCardPrefab in weightCardPrefabs select weightCardPrefab.weight;
         for (var i = 0; i < cardCount; i++) cardPrefabList.Add(GetRandomCardByWeight(e.Sum()));
     }
@@ -27,8 +29,12 @@ public class Deck : MonoBehaviour
     {
         if (cardPrefabList.Count == 0) return null;
         var card = cardPrefabList[0];
-        cardPrefabList.RemoveAt(0);
         return card;
+    }
+
+
+    public void DeleteNextCard() {
+        cardPrefabList.RemoveAt(0);
     }
 
     public Card GetRandomCardByWeight(int totalWeight)

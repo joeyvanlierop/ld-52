@@ -133,5 +133,5 @@ MonoBehaviour:
   originalPOS: {x: 0, y: 0, z: 0}
   originalSort: 0
   hoverMovement: {x: 0, y: 1, z: -1}
-  actionPoints: 0
+  actionPoints: 1
   MoistCrop: {fileID: 4531929445922487050, guid: aea8a98175d17af4dad3c360b7807983, type: 3}

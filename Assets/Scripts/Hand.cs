@@ -64,6 +64,7 @@ public class Hand : MonoBehaviour
 
     public void AddCard(Card card, Player player)
     {
+        Debug.Log($"Points After {card.actionPoints}");
         var c = Instantiate(card);
         c.RegisterPlayer(player);
         c.transform.SetParent(transform);

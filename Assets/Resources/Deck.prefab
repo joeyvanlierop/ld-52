@@ -45,19 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weightCardPrefabs:
-  - weight: 50
+  - weight: 55
     prefab: {fileID: 4756231212839602284, guid: 06605652419c225409eda3529219f9b2, type: 3}
-  - weight: 25
+  - weight: 10
     prefab: {fileID: 182350025850350687, guid: e2657d684ecd5c14f9ed41768736c8d0, type: 3}
-  - weight: 25
+  - weight: 40
     prefab: {fileID: 2489918179686135835, guid: fb3244b0c3f9b9543918e0d902948bca, type: 3}
-  - weight: 25
+  - weight: 20
     prefab: {fileID: 8584687815836524413, guid: 11b4f7e65305c6c4c95c519bb354378e, type: 3}
-  - weight: 25
+  - weight: 15
     prefab: {fileID: 6482776801946138769, guid: 215371178775c2d4b8e12f61cbe4f368, type: 3}
-  - weight: 50
+  - weight: 55
     prefab: {fileID: 2014640494431286828, guid: ab01ad76a12f3724691de5a49c14208b, type: 3}
-  - weight: 25
+  - weight: 20
     prefab: {fileID: -9107547786055011224, guid: c82a65a1d85d44042899ef833c318f9a, type: 3}
   cardCount: 52
   cardPrefabList: []

@@ -36,7 +36,7 @@ public class HarvestCard : Card
                     // calls onharvest to harvest plant if adjacent plant is same plant type
                     if (CropAdj.PlantType == crop.PlantType)
                     {
-                        CropAdj.OnHarvest();
+                        ActionPerformed(newPosition);
                     }
             }
 
@@ -49,9 +49,8 @@ public class HarvestCard : Card
                     // calls onharvest to harvest plant if adjacent plant is same plant type
                     if (CropAdj.PlantType == crop.PlantType)
                     {
-                        CropAdj.OnHarvest();
+                        ActionPerformed(newPosition);
                     }
-                    
             }
         }
     }

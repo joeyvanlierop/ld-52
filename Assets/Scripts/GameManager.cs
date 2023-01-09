@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour, TimerObserver
 
     public void StartGame(List<string> names_) {
         // Instantiate
+        
         if (names_.Count == 0) {
             for (var i = 0; i < playerCount; i++)
             {
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour, TimerObserver
             }
         }
 
-
+        
         // Randomize
         for (var i = 0; i < players.Count; i++)
         {
@@ -97,8 +98,7 @@ public class GameManager : MonoBehaviour, TimerObserver
         actionPoints = GameObject.FindGameObjectWithTag("ActionPoints").GetComponent<RectTransform>();
 
 
-        deck = Instantiate(deckPrefab);
-        deck.PopulateDeck();
+        
 
         cropManager = FindObjectOfType<CropManager>();
         highlightEffect = FindObjectOfType<HighlightEffect>();
@@ -114,6 +114,20 @@ public class GameManager : MonoBehaviour, TimerObserver
             text.text = $"{player.playerName}: 0";
             pointsText.name = player.playerName;
             pointsTexts.Add(pointsText);
+        }
+
+        deck = Instantiate(deckPrefab);
+        deck.PopulateDeck(playerCount);
+
+        foreach (Player player in players) {
+            player.MakeHand();
+            player.ShowHand();
+            for (int i = 0; i < 3; i++) {
+                var card = deck.DrawNextCard();
+                player.DrawCard(card, false);
+                deck.DeleteNextCard();
+            }
+            player.HideHand();
         }
 
         StartTransition(true);
@@ -162,7 +176,10 @@ public class GameManager : MonoBehaviour, TimerObserver
             drawCardButton.interactable = false;
             StartEnd();
         }
-        players[currentPlayerIndex].DrawCard(card);
+        var work = players[currentPlayerIndex].DrawCard(card);
+        if (work) {
+            deck.DeleteNextCard();
+        }
     }
 
 
