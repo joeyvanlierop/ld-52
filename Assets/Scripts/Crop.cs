@@ -13,7 +13,7 @@ public abstract class Crop : MonoBehaviour
 
     public void Spawn()
     {
-        tilemap.tileAnchor = new Vector3(0.5f, 0.5f, -1.9f);
+        tilemap.tileAnchor = new Vector3(0.9f, 0.9f, -1.9f);
         tilemap.SetTile(GetPosition(), tile);
     }
 

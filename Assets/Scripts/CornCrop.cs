@@ -6,7 +6,7 @@ public class CornCrop : Crop
     {
         if (tilemap.tileAnchor.z > -1) return;
 
-        tilemap.tileAnchor = new Vector3(0.5f, 0.5f, tilemap.tileAnchor.z + growRate);
+        tilemap.tileAnchor = new Vector3(tilemap.tileAnchor.x - 0.1f, tilemap.tileAnchor.y - 0.1f, tilemap.tileAnchor.z + growRate);
         if (tilemap.tileAnchor.z > -1)
         {
             tilemap.tileAnchor = new Vector3(0.5f, 0.5f, 0);
