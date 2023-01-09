@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class GameManager : MonoBehaviour, TimerObserver
 {
@@ -33,6 +34,12 @@ public class GameManager : MonoBehaviour, TimerObserver
     private readonly string[] default_names = { "joe", "mama", "ben", "dover" };
     private readonly List<GameObject> pointsTexts = new();
     private RectTransform actionPoints;
+    private Button drawCardButton;
+    private Button endTurnButton;
+    private int turnsLeft;
+    private bool ending;
+
+
 
 
     // Start is called before the first frame update
@@ -52,6 +59,7 @@ public class GameManager : MonoBehaviour, TimerObserver
                 players.Add(player);
             }
         } else {
+            playerCount = names_.Count;
             foreach (string name in names_) {
                 var player = Instantiate(playerPrefab);
                 player.playerName = name;
@@ -82,6 +90,9 @@ public class GameManager : MonoBehaviour, TimerObserver
         generalUi.GetComponentsInChildren(buttons);
         buttons.Find(b => b.name == "EndTurnButton").onClick.AddListener(Transition);
         buttons.Find(b => b.name == "DrawCardButton").onClick.AddListener(DrawCard);
+        drawCardButton =  buttons.Find(b => b.name == "DrawCardButton");
+        endTurnButton = buttons.Find(b => b.name == "EndTurnButton");
+
         generalUi.enabled = false;
         actionPoints = GameObject.FindGameObjectWithTag("ActionPoints").GetComponent<RectTransform>();
 
@@ -147,8 +158,30 @@ public class GameManager : MonoBehaviour, TimerObserver
     public void DrawCard()
     {
         var card = deck.DrawNextCard();
-        var player = players[currentPlayerIndex];
+        if (deck.cardPrefabList.Count == 0) {
+            drawCardButton.interactable = false;
+            StartEnd();
+        }
         players[currentPlayerIndex].DrawCard(card);
+    }
+
+
+    public void StartEnd() {
+        turnsLeft = players.Count;
+        ending = true;
+    }
+
+
+    public void EndGame() {
+        var winner = players[0];
+        for (int i = 1; i < players.Count; i++) {
+            if (winner.points < players[i].points) {
+                winner = players[i];
+            } 
+        }
+
+        Debug.Log(winner.playerName + " wins");
+        endTurnButton.interactable = false;
     }
 
 
@@ -156,6 +189,13 @@ public class GameManager : MonoBehaviour, TimerObserver
     {
         if (!inTransition)
         {
+            if (ending) {
+                if (turnsLeft == 0) {
+                    EndGame();
+                    return;
+                }
+                turnsLeft--;
+            }
             players[currentPlayerIndex].HideHand();
             currentPlayerIndex++;
             if (currentPlayerIndex == playerCount) currentPlayerIndex = 0;
