@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     private Button endTurnButton;
     private int turnsLeft;
     private bool ending;
+    private GameObject gameOverText;
 
 
 
@@ -130,6 +131,9 @@ public class GameManager : MonoBehaviour, TimerObserver
             player.HideHand();
         }
 
+        gameOverText = GameObject.FindGameObjectWithTag("GameOver");
+        gameOverText.SetActive(false);
+
         StartTransition(true);
     }
 
@@ -197,7 +201,8 @@ public class GameManager : MonoBehaviour, TimerObserver
                 winner = players[i];
             } 
         }
-
+        gameOverText.SetActive(true);
+        gameOverText.GetComponent<TextMeshProUGUI>().text = $"Game Over!\n{winner.playerName} Wins!";
         Debug.Log(winner.playerName + " wins");
         endTurnButton.interactable = false;
     }
