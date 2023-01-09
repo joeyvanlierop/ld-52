@@ -32,6 +32,9 @@ public class Hand : MonoBehaviour
                 new Vector3(cardWidth * (cards.Count / 2 - i) * (spacing / cards.Count), stageDimensions.y + yOffset,
                     0);
             c.GetComponent<SpriteRenderer>().sortingOrder = i;
+            GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            c.GetComponent<SpriteRenderer>().color =
+                new Color(1, 1, 1, gm.players[gm.currentPlayerIndex].actionPoints >= c.actionPoints ? 1f : 0.3f);
         }
     }
 
