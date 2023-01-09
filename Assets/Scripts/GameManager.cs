@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour, TimerObserver
     public void DrawCard()
     {
         var card = deck.DrawNextCard();
-        if (deck.cardPrefabList.Count == 0) {
+        if (deck.cardPrefabList.Count == 1) {
             drawCardButton.interactable = false;
             StartEnd();
         }
