@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        
+    }
+
+    public void MakeHand() {
         hand = Instantiate(handPrefab);
     }
 
@@ -48,13 +52,19 @@ public class Player : MonoBehaviour
     }
 
 
-    public void DrawCard(Card card)
-    {
+    public bool DrawCard(Card card, bool usePoints = true)
+    {   
+        if (!usePoints) {
+            Debug.Log($"Points {card.actionPoints}");
+            hand.AddCard(card, this);
+            return true;
+        }
         var new_points = actionPoints - drawActionPoints;
-        if (new_points < 0) return;
+        if (new_points < 0) return false;
         actionPoints = new_points;
         NotifyActionPointsChanged();
         hand.AddCard(card, this);
+        return true;
     }
 
 

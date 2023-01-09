@@ -16,7 +16,7 @@ public class Hand : MonoBehaviour
         if (Input.GetKey(KeyCode.R)) bringHandFromNarnia();
     }
 
-    private void Layout()
+    public void Layout()
     {
         var stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
 
@@ -32,6 +32,9 @@ public class Hand : MonoBehaviour
                 new Vector3(cardWidth * (cards.Count / 2 - i) * (spacing / cards.Count), stageDimensions.y + yOffset,
                     0);
             c.GetComponent<SpriteRenderer>().sortingOrder = i;
+            GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            c.GetComponent<SpriteRenderer>().color =
+                new Color(1, 1, 1, gm.players[gm.currentPlayerIndex].actionPoints >= c.actionPoints ? 1f : 0.3f);
         }
     }
 
@@ -64,6 +67,7 @@ public class Hand : MonoBehaviour
 
     public void AddCard(Card card, Player player)
     {
+        Debug.Log($"Points After {card.actionPoints}");
         var c = Instantiate(card);
         c.RegisterPlayer(player);
         c.transform.SetParent(transform);
