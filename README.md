@@ -8,7 +8,7 @@ The game ends when there are no more cards to draw, and the player with the most
 
 ![game preview image](https://user-images.githubusercontent.com/13614780/211246036-d216ddf1-c8fe-4a89-be7c-2b6cb5cfe9f7.png)
 
-## Card Descriptions:
+### Card Descriptions:
 
 - **Purple Corn:** A seed card that allows the player to plant a purple corn crop on an empty tile. When harvested, the purple corn crop is worth 5 points. **Costs 1 AP to play**
 
@@ -24,7 +24,7 @@ The game ends when there are no more cards to draw, and the player with the most
 
 - **Fertilizer:** An action card that allows the player to immediately grow a crop to its full maturity. **Costs 2 AP to play**
 
-## Other important gameplay features:
+### Other important gameplay features:
 
 - Extra AP and cards carry over between rounds
 
