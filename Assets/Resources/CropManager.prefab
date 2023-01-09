@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907a239bd40333a4ca932b99f7b42177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownerTiles: []
+  ownerTilemap: {fileID: 0}
+  groundTilemaps: []
+  obstacleTilemaps: []
+  blacklistedTiles: []
 --- !u!114 &3564386543106003475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,24 +62,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d97ae200d8c9d46bd32c9539497346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabled: 1
+  active: 0
+  draggedCard: {fileID: 0}
   highlightTile: {fileID: 11400000, guid: 968c09c7408f64c418f65e2e27278bfd, type: 2}
   blacklistTile: {fileID: 11400000, guid: d47c83d3fa0d6104cbfd9ec00ae5d7b3, type: 2}
   offset: {x: 0, y: 0, z: 0}
-  groundTilemaps:
-  - {fileID: 0}
-  obstacleTilemaps:
-  - {fileID: 0}
-  - {fileID: 0}
-  blacklistedTiles:
-  - {fileID: 11400000, guid: 324351bfaa98ba74da7d4a996a7f81ec, type: 2}
-  - {fileID: 11400000, guid: 5e529575f2a9f7a458694b6f555c77f2, type: 2}
-  - {fileID: 11400000, guid: e0ea12f3315784c48a5dc1faa451a005, type: 2}
-  - {fileID: 11400000, guid: 7d8377b934cc510408909561597d391c, type: 2}
-  - {fileID: 11400000, guid: 0915f786560c60542b87d295b122981d, type: 2}
-  - {fileID: 11400000, guid: b46d8c614a951fa4793eb2762b8a85fe, type: 2}
-  - {fileID: 11400000, guid: b8d4de7371d0b2446a40833e3ad56178, type: 2}
-  - {fileID: 11400000, guid: 71f2561a9bdccd24a86ba2ab48479a40, type: 2}
-  - {fileID: 11400000, guid: eed7e356b34fd1b44909601470ac9544, type: 2}
-  - {fileID: 11400000, guid: 6d0520c7e4d2f984b9d68426519116ef, type: 2}
-  cornCrop: {fileID: 2142658685016124050, guid: fea86a12e07a9064cb8c573d91589631, type: 3}
+  isValidTile: 0
+  hovering: 0

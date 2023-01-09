@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
     private Button removePlayerButton;
 
     private List<GameObject> namesObj;
+
+    public GameObject tilest;
     
     // Start is called before the first frame update
     void Start()
@@ -83,6 +85,7 @@ public class MainMenu : MonoBehaviour
             names.Add(nameObj.GetComponentInChildren<TMPro.TMP_InputField>().text);
         }
         var game = Instantiate(gameManagerPrefab);
+        game.tilest = tilest;
         game.StartGame(names);
         Destroy(GameObject.FindGameObjectWithTag("MainMenu"));
     }

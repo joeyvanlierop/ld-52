@@ -6,7 +6,7 @@ public class HighlightEffect : MonoBehaviour
     private CropManager cropManager;
     private Tilemap highlightTileMap;
 
-  public bool active = true;
+  public bool active = false;
   public Card draggedCard = null;
   public Tile highlightTile;
   public Tile blacklistTile;
@@ -15,9 +15,14 @@ public class HighlightEffect : MonoBehaviour
   public bool hovering = false;
     private void Start()
     {
-        highlightTileMap = GameObject.FindGameObjectWithTag("Highlight").GetComponent<Tilemap>();
-        cropManager = GetComponent<CropManager>();
+        
     }
+
+    public void StartManager() {
+      highlightTileMap = GameObject.FindGameObjectWithTag("Highlight").GetComponent<Tilemap>();
+      cropManager = GetComponent<CropManager>();
+    }
+
 
     private void Update()
     {

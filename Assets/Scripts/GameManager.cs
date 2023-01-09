@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour, TimerObserver
     private bool ending;
     private GameObject gameOverText;
 
+    public GameObject tilest;
+
 
 
 
@@ -52,7 +54,8 @@ public class GameManager : MonoBehaviour, TimerObserver
 
     public void StartGame(List<string> names_) {
         // Instantiate
-        
+        tilest.SetActive(true);
+
         if (names_.Count == 0) {
             for (var i = 0; i < playerCount; i++)
             {
@@ -103,6 +106,7 @@ public class GameManager : MonoBehaviour, TimerObserver
 
         cropManager = FindObjectOfType<CropManager>();
         highlightEffect = FindObjectOfType<HighlightEffect>();
+        highlightEffect.StartManager();
 
         // Add points UI elements
         for (var i = 0; i < players.Count; i++)
