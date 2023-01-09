@@ -16,6 +16,7 @@ TagManager:
   - Names
   - MainMenu
   - ActionPoints
+  - GameOver
   layers:
   - Default
   - TransparentFX

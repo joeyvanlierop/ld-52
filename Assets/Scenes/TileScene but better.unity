@@ -3369,6 +3369,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8943128540067307316, guid: 68992cb22f0a745478cb0574d3e94c20, type: 3}
+      propertyPath: m_text
+      value: PP poo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943128540067307316, guid: 68992cb22f0a745478cb0574d3e94c20, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943128540067307316, guid: 68992cb22f0a745478cb0574d3e94c20, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943128540067307316, guid: 68992cb22f0a745478cb0574d3e94c20, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943128540067307316, guid: 68992cb22f0a745478cb0574d3e94c20, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68992cb22f0a745478cb0574d3e94c20, type: 3}
 --- !u!1 &1553233509
